@@ -2,12 +2,22 @@
 package almoxarifado.dao;
 
 import almoxarifado.modelo.Usuario;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 
 public class Dao_CadastroUsuario {
@@ -92,6 +102,31 @@ public class Dao_CadastroUsuario {
         pst.setInt(5, u.getCodigo());
         pst.execute();
         pst.close();
+    }
+ 
+    public boolean gerarRelatorioCliente() throws SQLException, JRException, IOException {
+        sql = "SELECT "
+                + "     usuario.codigo  AS usuario_codigo, "
+                + "     usuario.nome  AS usuario_nome, "
+                + "     usuario.senha  AS usuario_senha, "
+                + "     usuario.tipoUsuario  AS usuario_tipoUsuario, "
+                + "     usuario.status  AS usuario_status "
+                + "FROM "
+                + "      usuario";
+        pst = conexao.getInstance().prepareStatement(sql);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        JRResultSetDataSource jrRS = new JRResultSetDataSource(pst.getResultSet());
+        
+        InputStream caminho = this.getClass().getClassLoader().getResourceAsStream("relatorio/teste2.jasper");
+        JasperPrint jasper = JasperFillManager.fillReport(caminho, new HashMap(),jrRS);
+        JasperExportManager.exportReportToPdfFile(jasper,"C:/Users/User/Downloads/jcalendar-1.1.4.jar/teste.pdf");
+        File file =new File("C:/Users/User/Downloads/jcalendar-1.1.4.jar/teste.pdf");
+        Desktop.getDesktop().open(file);
+        file.deleteOnExit();
+        
+        pst.close();
+        return true;
     }
 
 }

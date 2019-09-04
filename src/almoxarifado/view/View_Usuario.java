@@ -9,6 +9,7 @@ import almoxarifado.dao.Dao_CadastroUsuario;
 import almoxarifado.modelo.Usuario;
 import almoxarifado.util.LimitaDigitos;
 import almoxarifado.util.LimitaDigitosNum;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -110,6 +112,7 @@ public class View_Usuario extends javax.swing.JFrame {
         JTabCadastro = new javax.swing.JTable();
         ButtonAlterar = new javax.swing.JButton();
         botaoTodos = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jScrollPane2.setViewportView(jEditorPane1);
 
@@ -367,6 +370,15 @@ public class View_Usuario extends javax.swing.JFrame {
         });
         jPanel3.add(botaoTodos);
         botaoTodos.setBounds(20, 180, 80, 23);
+
+        jButton1.setText("relatorio");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1);
+        jButton1.setBounds(420, 150, 73, 23);
 
         jTabbedPane1.addTab("Consulta", jPanel3);
 
@@ -650,6 +662,20 @@ public class View_Usuario extends javax.swing.JFrame {
         campo(false,true,true,true,true,true);
         botao(false, true, true, true, false, true, true, false);
     }//GEN-LAST:event_ButtonNovoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        try {
+            daoUsuario.gerarRelatorioCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     private void limpar(){
         TextCod.setText("");
         TextNome.setText("");
@@ -713,6 +739,7 @@ public class View_Usuario extends javax.swing.JFrame {
     private javax.swing.JTextField TextNome;
     private javax.swing.JButton botaoPesquisarCodigo;
     private javax.swing.JButton botaoTodos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
