@@ -211,7 +211,9 @@ public class NovaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/medico.png"))); // NOI18N
         jMenu1.setText("Cadastrar");
+        jMenu1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
 
+        jMenuItem1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/o-negocio.png"))); // NOI18N
         jMenuItem1.setText("Usuário");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -221,6 +223,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
+        jMenuItem4.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuItem4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/prioridade.png"))); // NOI18N
         jMenuItem4.setText("Material");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -230,6 +233,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
+        jMenuItem3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/simb.png"))); // NOI18N
         jMenuItem3.setText("Categoria de Material");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -239,6 +243,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem3);
 
+        jMenuItem2.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/entregador.png"))); // NOI18N
         jMenuItem2.setText("Requisitante");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +253,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
+        jMenuItem5.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuItem5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/caixa.png"))); // NOI18N
         jMenuItem5.setText("Departamento");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +263,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem5);
 
+        jMenuItem6.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/aperto-de-mao.png"))); // NOI18N
         jMenuItem6.setText("Fornecedores");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -269,7 +276,8 @@ public class NovaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/002-descricao.png"))); // NOI18N
-        jMenu3.setText("Relatorios");
+        jMenu3.setText("Relatórios");
+        jMenu3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/001-distribuicao.png"))); // NOI18N
@@ -282,6 +290,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu6);
 
         jMenu2.setText("Sair");
+        jMenu2.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);

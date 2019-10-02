@@ -193,10 +193,10 @@ public class View_Material extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(232, 222, 200));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Cadastro de Material");
 
-        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +217,7 @@ public class View_Material extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Descrição");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(220, 30, 70, 20);
+        jLabel3.setBounds(230, 30, 60, 20);
 
         TextDesc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TextDesc.addActionListener(new java.awt.event.ActionListener() {
@@ -231,24 +231,24 @@ public class View_Material extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Categoria");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 70, 51, 20);
+        jLabel4.setBounds(40, 70, 51, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Consumivel");
+        jLabel5.setText("Consumível");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(300, 70, 70, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Observação");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 110, 63, 15);
+        jLabel6.setBounds(30, 110, 63, 15);
         jPanel1.add(TextObs);
         TextObs.setBounds(110, 110, 500, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("Estoque Minimo");
+        jLabel7.setText("Estoque Mínimo");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 140, 100, 17);
+        jLabel7.setBounds(10, 140, 90, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Estoque Máximo");
@@ -258,7 +258,7 @@ public class View_Material extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Custo Médio");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(410, 140, 80, 20);
+        jLabel9.setBounds(420, 140, 70, 20);
 
         TextEstMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,11 +274,11 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextEstMax);
-        TextEstMax.setBounds(290, 140, 100, 20);
+        TextEstMax.setBounds(290, 140, 120, 20);
 
         TextCustMed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(TextCustMed);
-        TextCustMed.setBounds(490, 140, 110, 23);
+        TextCustMed.setBounds(500, 140, 110, 23);
 
         ComboBoxCateg.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         ComboBoxCateg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria" }));
@@ -288,7 +288,7 @@ public class View_Material extends javax.swing.JFrame {
         TextCod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TextCod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(TextCod);
-        TextCod.setBounds(110, 30, 61, 21);
+        TextCod.setBounds(110, 30, 110, 21);
 
         RadioButtonConsumivel.setBackground(new java.awt.Color(230, 214, 165));
         RadioButtonConsumivel.addActionListener(new java.awt.event.ActionListener() {
@@ -353,7 +353,7 @@ public class View_Material extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTabCadastro);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Todos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -405,15 +405,15 @@ public class View_Material extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoPesquisarCodigo))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -443,32 +443,28 @@ public class View_Material extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(576, 576, 576)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ButtonSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ButtonLimpar1))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(ButtonSalvar)
-                .addGap(18, 18, 18)
-                .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ButtonLimpar1)
-                .addGap(209, 209, 209))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(576, 576, 576)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addComponent(ButtonNovo)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -490,7 +486,7 @@ public class View_Material extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(ButtonSair)
                 .addContainerGap())
         );
@@ -506,7 +502,7 @@ public class View_Material extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(729, 593));
+        setSize(new java.awt.Dimension(696, 593));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

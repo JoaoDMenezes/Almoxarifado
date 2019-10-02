@@ -26,10 +26,16 @@
               <Image iconType="3" name="/img/medico.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Sitka Small" size="12" style="0"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="12" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/o-negocio.png"/>
                 </Property>
@@ -41,6 +47,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="12" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/prioridade.png"/>
                 </Property>
@@ -52,6 +61,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="12" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/simb.png"/>
                 </Property>
@@ -63,6 +75,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="12" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/entregador.png"/>
                 </Property>
@@ -74,6 +89,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="12" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/caixa.png"/>
                 </Property>
@@ -85,6 +103,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Sitka Small" size="12" style="0"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/img/aperto-de-mao.png"/>
                 </Property>
@@ -101,7 +122,10 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/img/002-descricao.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Relatorios"/>
+            <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Sitka Small" size="12" style="0"/>
+            </Property>
           </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
@@ -128,6 +152,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sair"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Sitka Small" size="12" style="0"/>
+            </Property>
           </Properties>
         </Menu>
       </SubComponents>

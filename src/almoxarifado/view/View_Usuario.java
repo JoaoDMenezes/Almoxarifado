@@ -119,8 +119,8 @@ public class View_Usuario extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(232, 222, 200));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Cadastro de Usuario");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Cadastro de Usuário");
 
         jPanel1.setBackground(new java.awt.Color(230, 214, 165));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados De Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -129,12 +129,12 @@ public class View_Usuario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Código");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(60, 30, 43, 17);
+        jLabel2.setBounds(60, 30, 40, 17);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Nome");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(250, 30, 50, 20);
+        jLabel3.setBounds(260, 30, 40, 20);
 
         TextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,19 +152,19 @@ public class View_Usuario extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Confirme sua Senha");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(320, 60, 110, 15);
+        jLabel5.setBounds(320, 60, 110, 20);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel6.setText("Tipo de Usuario");
+        jLabel6.setText("Tipo de Usuário");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 90, 90, 15);
+        jLabel6.setBounds(20, 90, 90, 20);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Status");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(380, 90, 50, 15);
+        jLabel7.setBounds(390, 90, 40, 20);
         jPanel1.add(TextCod);
-        TextCod.setBounds(110, 30, 40, 23);
+        TextCod.setBounds(110, 30, 60, 23);
 
         PasswordFieldConfirSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,7 +196,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jPanel1.add(ComboBoxTipoUsuario);
         ComboBoxTipoUsuario.setBounds(110, 90, 190, 25);
 
-        ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +205,7 @@ public class View_Usuario extends javax.swing.JFrame {
             }
         });
 
-        ButtonLimpar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonLimpar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonLimpar1.setText("Limpar");
         ButtonLimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +213,7 @@ public class View_Usuario extends javax.swing.JFrame {
             }
         });
 
-        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -222,7 +222,7 @@ public class View_Usuario extends javax.swing.JFrame {
             }
         });
 
-        ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSalvarAlterar.setText("Alterar");
         ButtonSalvarAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +258,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTabCadastro);
 
-        botaoTodos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        botaoTodos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botaoTodos.setText("Todos");
         botaoTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +266,7 @@ public class View_Usuario extends javax.swing.JFrame {
             }
         });
 
-        ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonAlterar.setText("Editar");
         ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +277,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(230, 214, 165));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        BotaoBusca.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        BotaoBusca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BotaoBusca.setText("Buscar");
         BotaoBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -294,7 +294,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Nome");
 
-        botaoPesquisarCodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        botaoPesquisarCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         botaoPesquisarCodigo.setText("Buscar");
         botaoPesquisarCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -316,11 +316,11 @@ public class View_Usuario extends javax.swing.JFrame {
                 .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoPesquisarCodigo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(TextDescri)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotaoBusca)
                 .addContainerGap())
         );
@@ -328,17 +328,17 @@ public class View_Usuario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(TextDescri, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BotaoBusca)
-                        .addComponent(jLabel12)
-                        .addComponent(botaoPesquisarCodigo)
-                        .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BotaoBusca)
+                            .addComponent(jLabel12)
+                            .addComponent(botaoPesquisarCodigo)
+                            .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(TextDescri, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -350,8 +350,8 @@ public class View_Usuario extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Relatorio");
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Relatório");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -363,44 +363,31 @@ public class View_Usuario extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonSair))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonNovo))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(ButtonSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(ButtonAlterar)
-                                .addGap(282, 282, 282)
+                                .addGap(18, 18, 18)
                                 .addComponent(ButtonSalvarAlterar)
                                 .addGap(18, 18, 18)
-                                .addComponent(ButtonLimpar1)
-                                .addGap(0, 56, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ButtonNovo)))
-                                .addGap(25, 25, 25))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ButtonSair))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                                .addComponent(ButtonLimpar1))
+                            .addComponent(botaoTodos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -412,24 +399,22 @@ public class View_Usuario extends javax.swing.JFrame {
                     .addComponent(ButtonNovo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtonAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonSalvar))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtonLimpar1)
-                        .addComponent(ButtonSalvarAlterar)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonLimpar1)
+                    .addComponent(ButtonSalvarAlterar)
+                    .addComponent(ButtonAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ButtonSalvar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(botaoTodos)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonSair)
-                    .addComponent(jButton1))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(ButtonSair))
                 .addGap(76, 76, 76))
         );
 
@@ -444,7 +429,7 @@ public class View_Usuario extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(712, 514));
+        setSize(new java.awt.Dimension(712, 500));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

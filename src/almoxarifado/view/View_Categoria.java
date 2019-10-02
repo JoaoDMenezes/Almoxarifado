@@ -211,7 +211,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSair);
-        ButtonSair.setBounds(620, 520, 90, 30);
+        ButtonSair.setBounds(610, 510, 90, 30);
 
         ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSalvarAlterar.setText("Alterar");
@@ -221,9 +221,9 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSalvarAlterar);
-        ButtonSalvarAlterar.setBounds(440, 200, 90, 30);
+        ButtonSalvarAlterar.setBounds(520, 200, 90, 30);
 
-        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
@@ -232,12 +232,12 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonNovo);
-        ButtonNovo.setBounds(600, 10, 90, 30);
+        ButtonNovo.setBounds(610, 30, 90, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Cadastro de Categoria");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(40, 30, 155, 17);
+        jLabel3.setBounds(20, 30, 210, 22);
 
         ButtonSalvar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
@@ -248,9 +248,9 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSalvar1);
-        ButtonSalvar1.setBounds(330, 200, 95, 30);
+        ButtonSalvar1.setBounds(420, 200, 95, 30);
 
-        ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonLimpar.setText("Limpar");
         ButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -258,7 +258,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonLimpar);
-        ButtonLimpar.setBounds(540, 200, 80, 30);
+        ButtonLimpar.setBounds(620, 200, 80, 30);
 
         JTabCadastro.setBackground(new java.awt.Color(230, 214, 165));
         JTabCadastro.setModel(new javax.swing.table.DefaultTableModel(
@@ -283,7 +283,7 @@ public class View_Categoria extends javax.swing.JFrame {
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(20, 240, 680, 107);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Todos");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -291,7 +291,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1);
-        jButton1.setBounds(630, 350, 67, 25);
+        jButton1.setBounds(617, 360, 80, 25);
 
         jPanel1.setBackground(new java.awt.Color(230, 214, 165));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Categoria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -331,16 +331,16 @@ public class View_Categoria extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ButtonPesqCod, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(360, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(TextNomeCons)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ButtonPesqNome, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58))))
         );
@@ -367,14 +367,14 @@ public class View_Categoria extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 719, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(767, 568));
+        setSize(new java.awt.Dimension(719, 551));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
