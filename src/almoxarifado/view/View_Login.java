@@ -52,7 +52,7 @@ public class View_Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(0, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(230, 214, 165));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Padlock_User_Control_22601.png"))); // NOI18N
 

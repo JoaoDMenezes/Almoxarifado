@@ -43,14 +43,14 @@ public class View_Categoria extends javax.swing.JFrame {
     }
     private void inicio(){
         campo(false,false);
-        botao(true, false, false, true, false, true, true,false);
+        botao(true, false, false, true, false, true, true);
     }
     public void campo(boolean codigo ,boolean nome){
         this.TextNome.setEnabled(nome);
         this.TextCod.setEnabled(codigo);
     }
     private void botao(boolean novo, boolean salvar, boolean limpar, boolean sair, 
-            boolean salvarAterar, boolean pesCodigo, boolean pesNome, boolean alterar){
+            boolean salvarAterar, boolean pesCodigo, boolean pesNome){
         ButtonNovo.setEnabled(novo);
         ButtonSalvar1.setEnabled(salvar);
         ButtonLimpar.setEnabled(limpar);
@@ -58,7 +58,7 @@ public class View_Categoria extends javax.swing.JFrame {
         ButtonSalvarAlterar.setEnabled(salvarAterar);
         ButtonPesqCod.setEnabled(pesCodigo);
         ButtonPesqNome.setEnabled(pesNome);
-        ButtonAlterar.setEnabled(alterar); 
+        
     }
     public void atualizarTabela(){
        c = new Categoria();
@@ -127,7 +127,6 @@ public class View_Categoria extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -140,18 +139,16 @@ public class View_Categoria extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         ButtonSalvar1 = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabCadastro = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         TextCodigo = new javax.swing.JTextField();
         ButtonPesqCod = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        ButtonPesqNome = new javax.swing.JButton();
         TextNomeCons = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        ButtonAlterar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        ButtonPesqNome = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -159,18 +156,16 @@ public class View_Categoria extends javax.swing.JFrame {
         setTitle("Cadastro de Categoria");
         setUndecorated(true);
 
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(232, 222, 200));
         jPanel2.setLayout(null);
 
-        jPanel4.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16))); // NOI18N
+        jPanel4.setBackground(new java.awt.Color(230, 214, 165));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Código");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Nome");
 
         TextNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -185,7 +180,7 @@ public class View_Categoria extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextCod, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addComponent(TextCod, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,11 +196,11 @@ public class View_Categoria extends javax.swing.JFrame {
                     .addComponent(TextCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         jPanel2.add(jPanel4);
-        jPanel4.setBounds(10, 50, 506, 130);
+        jPanel4.setBounds(20, 80, 680, 100);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
@@ -216,7 +211,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSair);
-        ButtonSair.setBounds(419, 190, 90, 40);
+        ButtonSair.setBounds(620, 520, 90, 30);
 
         ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSalvarAlterar.setText("Alterar");
@@ -226,7 +221,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSalvarAlterar);
-        ButtonSalvarAlterar.setBounds(230, 190, 90, 40);
+        ButtonSalvarAlterar.setBounds(440, 200, 90, 30);
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
@@ -237,12 +232,12 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonNovo);
-        ButtonNovo.setBounds(10, 190, 90, 40);
+        ButtonNovo.setBounds(600, 10, 90, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Cadastro de Categoria");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 20, 183, 20);
+        jLabel3.setBounds(40, 30, 155, 17);
 
         ButtonSalvar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
@@ -253,7 +248,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSalvar1);
-        ButtonSalvar1.setBounds(110, 190, 95, 40);
+        ButtonSalvar1.setBounds(330, 200, 95, 30);
 
         ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ButtonLimpar.setText("Limpar");
@@ -263,12 +258,9 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonLimpar);
-        ButtonLimpar.setBounds(330, 190, 80, 40);
+        ButtonLimpar.setBounds(540, 200, 80, 30);
 
-        jTabbedPane1.addTab("Cadastro", jPanel2);
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
-
+        JTabCadastro.setBackground(new java.awt.Color(230, 214, 165));
         JTabCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -288,42 +280,8 @@ public class View_Categoria extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTabCadastro);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Código");
-
-        TextCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        ButtonPesqCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonPesqCod.setText("Pesquisar");
-        ButtonPesqCod.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonPesqCodActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Nome");
-
-        ButtonPesqNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonPesqNome.setText("Pesquisar");
-        ButtonPesqNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonPesqNomeActionPerformed(evt);
-            }
-        });
-
-        TextNomeCons.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel6.setText("Consulta de Categoria");
-
-        ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonAlterar.setText("Alterar");
-        ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonAlterarActionPerformed(evt);
-            }
-        });
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 240, 680, 107);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Todos");
@@ -332,149 +290,101 @@ public class View_Categoria extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jButton1);
+        jButton1.setBounds(630, 350, 67, 25);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ButtonPesqCod, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel6)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TextNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonPesqNome, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(86, Short.MAX_VALUE))
+        jPanel1.setBackground(new java.awt.Color(230, 214, 165));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Categoria", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Código");
+
+        TextCodigo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        ButtonPesqCod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonPesqCod.setText("Buscar");
+        ButtonPesqCod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPesqCodActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Nome");
+
+        TextNomeCons.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        ButtonPesqNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonPesqNome.setText("Buscar");
+        ButtonPesqNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonPesqNomeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonPesqCod, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(360, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TextNomeCons)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonPesqNome, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(TextCodigo)
-                    .addComponent(ButtonPesqCod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonPesqCod))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TextNomeCons)
-                    .addComponent(ButtonPesqNome)
-                    .addComponent(jLabel5))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(TextNomeCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonPesqNome))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consulta", jPanel3);
+        jPanel2.add(jPanel1);
+        jPanel1.setBounds(20, 390, 680, 110);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 767, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(530, 276));
+        setSize(new java.awt.Dimension(767, 568));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
-            if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
-     {
-         this.dispose();
-     } 
-    }//GEN-LAST:event_ButtonSairActionPerformed
 
-    private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-    
-        if(TextCodigo.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Escolha um para Alterar");
+    private void ButtonPesqNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesqNomeActionPerformed
+        if(TextNomeCons.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Digite o que esta procurando");
+        }else{
+            BuscaTabela();
         }
-        else{
-            
-            this.jTabbedPane1.setSelectedIndex(0);
-            campo(false, true);
-            botao(false, false, true, true, true, true, true, false);
-            TextCodigo.setText("");
-        }
-    }//GEN-LAST:event_ButtonAlterarActionPerformed
-
-    private void ButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvar1ActionPerformed
-    if(!TextNome.getText().isEmpty()){
-             c = new Categoria();
-             c.setNome(TextNome.getText());
-             try {
-                 daoCategoria.salvar(c);
-             } catch (SQLException ex) {
-                 Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-             }
-             limpar();
-             atualizarTabela();
-         }else{
-              JOptionPane.showMessageDialog(null, "A dados a serem inceridos");
-         }
-    }//GEN-LAST:event_ButtonSalvar1ActionPerformed
-
-    private void JTabCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTabCadastroMouseClicked
-         if (JTabCadastro.getSelectedRow() != -1) {
-            TextCodigo.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
-            TextCod.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
-            TextNome.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 1).toString());
-           ButtonAlterar.setEnabled(true);
-         }
-    }//GEN-LAST:event_JTabCadastroMouseClicked
-
-    private void ButtonSalvarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarAlterarActionPerformed
-              if (!TextNome.getText().isEmpty()) {
-                c = new Categoria();
-                c.setCodigo(Integer.parseInt(TextCod.getText()));
-                c.setNome(TextNome.getText());
-                try {
-                    daoCategoria.getAlterar(c);
-                } catch (SQLException ex) {
-                    Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                atualizarTabela();
-                limpar();
-            }
-    }//GEN-LAST:event_ButtonSalvarAlterarActionPerformed
-
-    private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
-        limpar();
-        inicio();
-    }//GEN-LAST:event_ButtonLimparActionPerformed
-
-    private void ButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNovoActionPerformed
-        campo(false,true);
-        botao(false, true, true, true, false, true, true, false);
-    }//GEN-LAST:event_ButtonNovoActionPerformed
+    }//GEN-LAST:event_ButtonPesqNomeActionPerformed
 
     private void ButtonPesqCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesqCodActionPerformed
         if(TextCodigo.getText().isEmpty()){
@@ -482,36 +392,85 @@ public class View_Categoria extends javax.swing.JFrame {
         }
         else{
             try{
-            c = daoCategoria.getCategoriaByCodigo(Integer.parseInt(TextCodigo.getText()));
-            if(c == null){
-                JOptionPane.showMessageDialog(null, "Usuario não encontrado");
-            }
-            else{
-               TextCod.setText(String.valueOf(c.getCodigo()));
-               TextNome.setText(c.getNome());
-               BuscaCodigo();   
-            }
+                c = daoCategoria.getCategoriaByCodigo(Integer.parseInt(TextCodigo.getText()));
+                if(c == null){
+                    JOptionPane.showMessageDialog(null, "Usuario não encontrado");
+                }
+                else{
+                    TextCod.setText(String.valueOf(c.getCodigo()));
+                    TextNome.setText(c.getNome());
+                    BuscaCodigo();
+                }
             }catch(Exception ex){
                 ex.printStackTrace();
             }
-            ButtonAlterar.setEnabled(true);
+           
         }
     }//GEN-LAST:event_ButtonPesqCodActionPerformed
 
-    private void ButtonPesqNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesqNomeActionPerformed
-         if(TextNomeCons.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Digite o que esta procurando");
-        }else{
-        BuscaTabela();
-        }
-    }//GEN-LAST:event_ButtonPesqNomeActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       atualizarTabela();
-       limpar();
-       inicio();
+        atualizarTabela();
+        limpar();
+        inicio();
     }//GEN-LAST:event_jButton1ActionPerformed
-    private void limpar(){
+
+    private void JTabCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTabCadastroMouseClicked
+        if (JTabCadastro.getSelectedRow() != -1) {
+            TextCodigo.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
+            TextCod.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
+            TextNome.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 1).toString());
+            
+        }
+    }//GEN-LAST:event_JTabCadastroMouseClicked
+
+    private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
+        limpar();
+        inicio();
+    }//GEN-LAST:event_ButtonLimparActionPerformed
+
+    private void ButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvar1ActionPerformed
+        if(!TextNome.getText().isEmpty()){
+            c = new Categoria();
+            c.setNome(TextNome.getText());
+            try {
+                daoCategoria.salvar(c);
+            } catch (SQLException ex) {
+                Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            limpar();
+            atualizarTabela();
+        }else{
+            JOptionPane.showMessageDialog(null, "A dados a serem inceridos");
+        }
+    }//GEN-LAST:event_ButtonSalvar1ActionPerformed
+
+    private void ButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNovoActionPerformed
+        campo(false,true);
+        botao(false, true, true, true, false, true, true);
+    }//GEN-LAST:event_ButtonNovoActionPerformed
+
+    private void ButtonSalvarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarAlterarActionPerformed
+        if (!TextNome.getText().isEmpty()) {
+            c = new Categoria();
+            c.setCodigo(Integer.parseInt(TextCod.getText()));
+            c.setNome(TextNome.getText());
+            try {
+                daoCategoria.getAlterar(c);
+            } catch (SQLException ex) {
+                Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            atualizarTabela();
+            limpar();
+        }
+    }//GEN-LAST:event_ButtonSalvarAlterarActionPerformed
+
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_ButtonSairActionPerformed
+        private void limpar(){
         inicio();
         TextCodigo.setText("");
         TextCod.setText("");
@@ -553,7 +512,6 @@ public class View_Categoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonAlterar;
     private javax.swing.JButton ButtonLimpar;
     private javax.swing.JButton ButtonNovo;
     private javax.swing.JButton ButtonPesqCod;
@@ -573,11 +531,9 @@ public class View_Categoria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

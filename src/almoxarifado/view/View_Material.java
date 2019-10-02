@@ -65,7 +65,7 @@ public class View_Material extends javax.swing.JFrame {
         ButtonSalvar.setEnabled(salvar);
         ButtonLimpar1.setEnabled(limpar);
         ButtonSair.setEnabled(sair);
-        ButtonSalvarAlterar.setEnabled(salvarAterar);
+        //ButtonSalvarAlterar.setEnabled(salvarAterar);
         botaoPesquisarCodigo.setEnabled(pesCodigo);
         botaoTodos.setEnabled(pesNome);
         ButtonAlterar.setEnabled(alterar); 
@@ -153,7 +153,6 @@ public class View_Material extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ButtonNovo = new javax.swing.JButton();
@@ -176,30 +175,25 @@ public class View_Material extends javax.swing.JFrame {
         RadioButtonConsumivel = new javax.swing.JRadioButton();
         ButtonSair = new javax.swing.JButton();
         ButtonSalvar = new javax.swing.JButton();
-        ButtonSalvarAlterar = new javax.swing.JButton();
         ButtonLimpar1 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        TextCodMat = new javax.swing.JTextField();
-        TextDescri = new javax.swing.JTextField();
-        botaoPesquisarCodigo = new javax.swing.JButton();
-        botaoTodos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabCadastro = new javax.swing.JTable();
-        ButtonAlterar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        ButtonAlterar = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        TextCodMat = new javax.swing.JTextField();
+        botaoPesquisarCodigo = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        TextDescri = new javax.swing.JTextField();
+        botaoTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(232, 222, 200));
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Cadastro de Material");
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -211,16 +205,16 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 16))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(230, 214, 165));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Dados de Cadastro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel1.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Código");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(50, 30, 43, 17);
+        jLabel2.setBounds(50, 30, 37, 15);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Descrição");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(220, 30, 70, 20);
@@ -232,39 +226,39 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextDesc);
-        TextDesc.setBounds(300, 30, 310, 30);
+        TextDesc.setBounds(300, 30, 310, 23);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Categoria");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(30, 70, 58, 20);
+        jLabel4.setBounds(30, 70, 51, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Consumivel");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(300, 80, 70, 17);
+        jLabel5.setBounds(300, 70, 70, 17);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("Observação");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 110, 73, 17);
+        jLabel6.setBounds(20, 110, 63, 15);
         jPanel1.add(TextObs);
-        TextObs.setBounds(110, 110, 500, 30);
+        TextObs.setBounds(110, 110, 500, 20);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Estoque Minimo");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 160, 100, 17);
+        jLabel7.setBounds(10, 140, 100, 17);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Estoque Máximo");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(190, 160, 101, 20);
+        jLabel8.setBounds(190, 140, 89, 20);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Custo Médio");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(410, 160, 80, 20);
+        jLabel9.setBounds(410, 140, 80, 20);
 
         TextEstMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,7 +266,7 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextEstMin);
-        TextEstMin.setBounds(110, 160, 70, 30);
+        TextEstMin.setBounds(110, 140, 70, 20);
 
         TextEstMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,30 +274,30 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextEstMax);
-        TextEstMax.setBounds(300, 160, 100, 30);
+        TextEstMax.setBounds(290, 140, 100, 20);
 
         TextCustMed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(TextCustMed);
-        TextCustMed.setBounds(500, 160, 110, 30);
+        TextCustMed.setBounds(490, 140, 110, 23);
 
         ComboBoxCateg.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         ComboBoxCateg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria" }));
         jPanel1.add(ComboBoxCateg);
-        ComboBoxCateg.setBounds(110, 70, 160, 30);
+        ComboBoxCateg.setBounds(110, 70, 160, 23);
 
         TextCod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TextCod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(TextCod);
-        TextCod.setBounds(110, 30, 61, 30);
+        TextCod.setBounds(110, 30, 61, 21);
 
-        RadioButtonConsumivel.setBackground(new java.awt.Color(204, 204, 255));
+        RadioButtonConsumivel.setBackground(new java.awt.Color(230, 214, 165));
         RadioButtonConsumivel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioButtonConsumivelActionPerformed(evt);
             }
         });
         jPanel1.add(RadioButtonConsumivel);
-        RadioButtonConsumivel.setBounds(380, 70, 30, 40);
+        RadioButtonConsumivel.setBounds(380, 60, 30, 40);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
@@ -323,14 +317,6 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
 
-        ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSalvarAlterar.setText("Alterar");
-        ButtonSalvarAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonSalvarAlterarActionPerformed(evt);
-            }
-        });
-
         ButtonLimpar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonLimpar1.setText("Limpar");
         ButtonLimpar1.addActionListener(new java.awt.event.ActionListener() {
@@ -339,98 +325,7 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ButtonSalvarAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
-                        .addComponent(ButtonLimpar1)
-                        .addGap(18, 18, 18)
-                        .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ButtonNovo, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                        .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ButtonSalvarAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ButtonLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(26, 26, 26))
-        );
-
-        jTabbedPane1.addTab("Cadastro", jPanel2);
-
-        jPanel3.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel3.setLayout(null);
-
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel10.setText("Consulta de Material");
-        jPanel3.add(jLabel10);
-        jLabel10.setBounds(207, 11, 169, 20);
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("Código");
-        jPanel3.add(jLabel11);
-        jLabel11.setBounds(16, 55, 43, 17);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("Descrição");
-        jPanel3.add(jLabel12);
-        jLabel12.setBounds(16, 102, 59, 17);
-
-        TextCodMat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel3.add(TextCodMat);
-        TextCodMat.setBounds(63, 49, 87, 30);
-
-        TextDescri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel3.add(TextDescri);
-        TextDescri.setBounds(79, 102, 301, 30);
-
-        botaoPesquisarCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoPesquisarCodigo.setText("Pesquisar");
-        botaoPesquisarCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoPesquisarCodigoActionPerformed(evt);
-            }
-        });
-        jPanel3.add(botaoPesquisarCodigo);
-        botaoPesquisarCodigo.setBounds(170, 50, 99, 30);
-
-        botaoTodos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        botaoTodos.setText("Pesquisar");
-        botaoTodos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoTodosActionPerformed(evt);
-            }
-        });
-        jPanel3.add(botaoTodos);
-        botaoTodos.setBounds(390, 100, 100, 30);
-
+        JTabCadastro.setBackground(new java.awt.Color(230, 214, 165));
         JTabCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         JTabCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -458,8 +353,13 @@ public class View_Material extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTabCadastro);
 
-        jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 200, 676, 100);
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton1.setText("Todos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonAlterar.setText("Alterar");
@@ -468,33 +368,145 @@ public class View_Material extends javax.swing.JFrame {
                 ButtonAlterarActionPerformed(evt);
             }
         });
-        jPanel3.add(ButtonAlterar);
-        ButtonAlterar.setBounds(10, 160, 100, 30);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("Todos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel4.setBackground(new java.awt.Color(230, 214, 165));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Materiais", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Código");
+
+        TextCodMat.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        botaoPesquisarCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botaoPesquisarCodigo.setText("Buscar");
+        botaoPesquisarCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botaoPesquisarCodigoActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
-        jButton1.setBounds(577, 170, 100, 23);
 
-        jTabbedPane1.addTab("Consulta", jPanel3);
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Descrição");
+
+        TextDescri.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        botaoTodos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botaoTodos.setText("Buscar");
+        botaoTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoTodosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botaoPesquisarCodigo))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(182, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoPesquisarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(ButtonSalvar)
+                .addGap(18, 18, 18)
+                .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ButtonLimpar1)
+                .addGap(209, 209, 209))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(576, 576, 576)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(ButtonNovo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonSalvar)
+                    .addComponent(ButtonLimpar1)
+                    .addComponent(ButtonAlterar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addComponent(ButtonSair)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(705, 371));
+        setSize(new java.awt.Dimension(729, 593));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -605,44 +617,6 @@ public class View_Material extends javax.swing.JFrame {
         limpar();
     }//GEN-LAST:event_ButtonLimpar1ActionPerformed
 
-    private void ButtonSalvarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarAlterarActionPerformed
-       int o = JOptionPane.showConfirmDialog(null, "Você alterar os dados Cadastrados");
-        if (o == 0) {
-            boolean v = verificarCampo();
-            if (v) {
-                        m = new Material();
-                        m.setCodigo(Integer.parseInt(TextCod.getText()));
-                        m.setDescricao(TextDesc.getText());
-                   Categoria c;
-               
-                try {
-                    c = Dao_Material.pegaCategoria((String) String.valueOf(ComboBoxCateg.getSelectedItem()));
-                
-                
-                    m.setCategoria(c);
-                    if(RadioButtonConsumivel.isSelected()){
-                       m.setConsumivel(true);
-                    }else{
-                       m.setConsumivel(false);
-                    }
-                    m.setObservacao(TextObs.getText());
-                    m.setEstoqueMinimo(Integer.valueOf(TextEstMin.getText()));
-                    m.setEstoqueMaximo(Integer.valueOf(TextEstMax.getText()));
-                    m.setCustoMedio(Float.valueOf(TextCustMed.getText()));
-                    } catch (SQLException ex) {
-                    Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                try {
-                    Dao_Material.getAlterar(m);
-                } catch (SQLException ex) {
-                    Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                }   
-                atualizarTabela();
-                limpar();
-            }
-    }//GEN-LAST:event_ButtonSalvarAlterarActionPerformed
-
     private void botaoPesquisarCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarCodigoActionPerformed
         if(TextCodMat.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Escolha um codigo");
@@ -685,7 +659,7 @@ public class View_Material extends javax.swing.JFrame {
         }
         else{
             
-            this.jTabbedPane1.setSelectedIndex(0);
+            //this.jTabbedPane1.setSelectedIndex(0);
             campo(false, true, true, true, true, true, true, true);
             botao(false, false, true, true, true, true, true, false);
             TextCodMat.setText("");
@@ -778,7 +752,6 @@ public class View_Material extends javax.swing.JFrame {
     private javax.swing.JButton ButtonNovo;
     private javax.swing.JButton ButtonSair;
     private javax.swing.JButton ButtonSalvar;
-    private javax.swing.JButton ButtonSalvarAlterar;
     private javax.swing.JComboBox<String> ComboBoxCateg;
     private javax.swing.JTable JTabCadastro;
     private javax.swing.JRadioButton RadioButtonConsumivel;
@@ -794,7 +767,6 @@ public class View_Material extends javax.swing.JFrame {
     private javax.swing.JButton botaoTodos;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -807,8 +779,7 @@ public class View_Material extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
