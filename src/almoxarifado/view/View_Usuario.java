@@ -150,7 +150,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jLabel4.setBounds(70, 60, 34, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("Confirme sua Senha");
+        jLabel5.setText("Confirme sua senha");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(320, 60, 110, 20);
 
@@ -240,7 +240,7 @@ public class View_Usuario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "TipoUsuario", "Status"
+                "Código", "Nome", "Tipo Usuário", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -275,7 +275,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         jPanel2.setBackground(new java.awt.Color(230, 214, 165));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Usuários", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         BotaoBusca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         BotaoBusca.setText("Buscar");
@@ -429,7 +429,7 @@ public class View_Usuario extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(712, 500));
+        setSize(new java.awt.Dimension(712, 493));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

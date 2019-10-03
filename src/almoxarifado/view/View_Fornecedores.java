@@ -208,7 +208,7 @@ public class View_Fornecedores extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Bairro");
         jPanel5.add(jLabel9);
-        jLabel9.setBounds(50, 60, 40, 20);
+        jLabel9.setBounds(20, 60, 40, 20);
 
         txBairro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel5.add(txBairro);
@@ -406,7 +406,7 @@ public class View_Fornecedores extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "codigo", "razao", "nomeFantasia", "CNPJ_CPF", "incricaoEstadual_RG"
+                "Código", "Razão Social", "Nome Fantasia", "CNPJ_CPF", "Inscrição Estadual_RG"
             }
         ));
         JTabCadastro.addMouseListener(new java.awt.event.MouseAdapter() {

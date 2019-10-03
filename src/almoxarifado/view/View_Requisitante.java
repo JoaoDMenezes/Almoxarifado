@@ -175,9 +175,8 @@ public class View_Requisitante extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(26, 26, 26)
                         .addComponent(TextObs))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +276,7 @@ public class View_Requisitante extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Nome", "Departamento", "Observacao", "Funcao", "Status"
+                "Código", "Nome", "Departamento", "Observação", "Função", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

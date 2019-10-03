@@ -78,7 +78,7 @@ public class View_Login extends javax.swing.JFrame {
         jPanel1.add(TextSenha);
         TextSenha.setBounds(300, 160, 152, 20);
 
-        ButtonEntrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonEntrar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonEntrar.setText("Entrar");
         ButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,9 +86,9 @@ public class View_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ButtonEntrar);
-        ButtonEntrar.setBounds(320, 217, 71, 23);
+        ButtonEntrar.setBounds(280, 210, 80, 25);
 
-        ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSair.setText("Sair");
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +96,7 @@ public class View_Login extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ButtonSair);
-        ButtonSair.setBounds(401, 217, 55, 23);
+        ButtonSair.setBounds(370, 210, 80, 25);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iiii (1).jpg"))); // NOI18N
         jPanel1.add(jLabel6);
