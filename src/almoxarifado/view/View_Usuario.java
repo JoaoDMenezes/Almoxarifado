@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 
@@ -70,7 +72,7 @@ public class View_Usuario extends javax.swing.JFrame {
         ButtonSalvarAlterar.setEnabled(salvarAterar);
         botaoPesquisarCodigo.setEnabled(pesCodigo);
         botaoTodos.setEnabled(pesNome);
-        ButtonAlterar.setEnabled(alterar); 
+        ButtonEditar.setEnabled(alterar); 
     }   
     
     @SuppressWarnings("unchecked")
@@ -101,7 +103,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabCadastro = new javax.swing.JTable();
         botaoTodos = new javax.swing.JButton();
-        ButtonAlterar = new javax.swing.JButton();
+        ButtonEditar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         BotaoBusca = new javax.swing.JButton();
         TextDescri = new javax.swing.JTextField();
@@ -197,7 +199,7 @@ public class View_Usuario extends javax.swing.JFrame {
         ComboBoxTipoUsuario.setBounds(110, 90, 190, 25);
 
         ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
+        ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_32px.png"))); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -206,6 +208,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonLimpar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonLimpar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/broom_32px.png"))); // NOI18N
         ButtonLimpar1.setText("Limpar");
         ButtonLimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +217,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
+        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_32px.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +226,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSalvarAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_as_32px.png"))); // NOI18N
         ButtonSalvarAlterar.setText("Alterar");
         ButtonSalvarAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,11 +270,12 @@ public class View_Usuario extends javax.swing.JFrame {
             }
         });
 
-        ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonAlterar.setText("Editar");
-        ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+        ButtonEditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_property_32px.png"))); // NOI18N
+        ButtonEditar.setText("Editar");
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonAlterarActionPerformed(evt);
+                ButtonEditarActionPerformed(evt);
             }
         });
 
@@ -342,7 +347,7 @@ public class View_Usuario extends javax.swing.JFrame {
         );
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_delete_sign_50px_1.png"))); // NOI18N
         ButtonSair.setText("Sair");
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,59 +368,59 @@ public class View_Usuario extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonSair))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE)
+                        .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(ButtonNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(ButtonSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonSalvarAlterar)
+                        .addGap(18, 18, 18)
+                        .addComponent(ButtonLimpar1))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonNovo))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(ButtonSalvar)
-                                .addGap(18, 18, 18)
-                                .addComponent(ButtonAlterar)
-                                .addGap(18, 18, 18)
-                                .addComponent(ButtonSalvarAlterar)
-                                .addGap(18, 18, 18)
-                                .addComponent(ButtonLimpar1))
-                            .addComponent(botaoTodos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                        .addComponent(ButtonSair)))
+                .addGap(20, 20, 20))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(3, 3, 3)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(ButtonNovo))
+                    .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ButtonLimpar1)
-                    .addComponent(ButtonSalvarAlterar)
-                    .addComponent(ButtonAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ButtonSalvar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(botaoTodos)
-                .addGap(11, 11, 11)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(ButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonLimpar1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSalvarAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(ButtonSair))
-                .addGap(76, 76, 76))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(botaoTodos)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -429,7 +434,7 @@ public class View_Usuario extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(712, 493));
+        setSize(new java.awt.Dimension(712, 484));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -450,10 +455,10 @@ public class View_Usuario extends javax.swing.JFrame {
     private void botaoTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTodosActionPerformed
         atualizarTabela();
         TextCodMat.setText("");
-        ButtonAlterar.setEnabled(false);
+        ButtonEditar.setEnabled(false);
     }//GEN-LAST:event_botaoTodosActionPerformed
 
-    private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
 
         if(TextCodMat.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Escolha um para Alterar");
@@ -461,9 +466,10 @@ public class View_Usuario extends javax.swing.JFrame {
         else{
             campo(false, true, true, true, true, true);
             botao(false, false, true, true, true, true, true, false);
+           
             TextCodMat.setText("");
         }
-    }//GEN-LAST:event_ButtonAlterarActionPerformed
+    }//GEN-LAST:event_ButtonEditarActionPerformed
 
     private void JTabCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTabCadastroMouseClicked
         if (JTabCadastro.getSelectedRow() != -1) {
@@ -490,7 +496,7 @@ public class View_Usuario extends javax.swing.JFrame {
             }catch(Exception ex){
                 ex.printStackTrace();
             }
-            ButtonAlterar.setEnabled(true);
+            ButtonEditar.setEnabled(true);
         }
     }//GEN-LAST:event_JTabCadastroMouseClicked
 
@@ -534,7 +540,7 @@ public class View_Usuario extends javax.swing.JFrame {
             }catch(Exception ex){
                 ex.printStackTrace();
             }
-            ButtonAlterar.setEnabled(true);
+            ButtonEditar.setEnabled(true);
         }
     }//GEN-LAST:event_botaoPesquisarCodigoActionPerformed
 
@@ -546,6 +552,10 @@ public class View_Usuario extends javax.swing.JFrame {
         boolean CV = camposVazios();
         if(CV){
             if(PasswordFieldSenha.getText().equals(PasswordFieldConfirSenha.getText())){
+              int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nNome: "+TextNome.getText()
+                                       + "\n Tipo do Usuario: "+ComboBoxTipoUsuario.getSelectedItem().toString());
+               if(s==0){ 
+                
                 u = new Usuario();
                 u.setNome(TextNome.getText());
                 u.setSenha(PasswordFieldSenha.getText());
@@ -563,6 +573,7 @@ public class View_Usuario extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "SALVO");
                 limpar();
                 atualizarTabela();
+               }
             }else{
                 JOptionPane.showMessageDialog(null, "A senha nao confere");
             }
@@ -571,13 +582,6 @@ public class View_Usuario extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_ButtonSalvarActionPerformed
-
-    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
-        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
-        {
-            this.dispose();
-        }
-    }//GEN-LAST:event_ButtonSairActionPerformed
 
     private void ComboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxStatusActionPerformed
         // TODO add your handling code here:
@@ -598,30 +602,36 @@ public class View_Usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonNovoActionPerformed
 
     private void ButtonSalvarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarAlterarActionPerformed
-        int o = JOptionPane.showConfirmDialog(null, "Você alterar os dados Cadastrados");
-        if (o == 0) {
-            boolean v = camposVazios();
-            if (v) {
-                u = new Usuario();
-                u.setCodigo(Integer.parseInt(TextCod.getText()));
-                u.setNome(TextNome.getText());
-                u.setSenha(PasswordFieldSenha.getText());
-                u.setTipoUsuario((String) ComboBoxTipoUsuario.getSelectedItem());
-                if(ComboBoxStatus.getSelectedItem().equals("Ativo")){
-                    u.setStatus(true);
-                }else{
-                    u.setStatus(false);
-                }
+        boolean CV = camposVazios();
+        if(CV){
+            if(PasswordFieldSenha.getText().equals(PasswordFieldConfirSenha.getText())){        
+            int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nNome: "+TextNome.getText()
+                                       + "\n Tipo do Usuario: "+ComboBoxTipoUsuario.getSelectedItem().toString());
+               if(s==0){ 
+                boolean v = camposVazios();
+                if (v) {
+                    u = new Usuario();
+                    u.setCodigo(Integer.parseInt(TextCod.getText()));
+                    u.setNome(TextNome.getText());
+                    u.setSenha(PasswordFieldSenha.getText());
+                    u.setTipoUsuario((String) ComboBoxTipoUsuario.getSelectedItem());
+                    if(ComboBoxStatus.getSelectedItem().equals("Ativo")){
+                        u.setStatus(true);
+                    }else{
+                        u.setStatus(false);
+                    }
 
-                try {
-                    daoUsuario.getAlterar(u);
-                } catch (SQLException ex) {
-                    Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                    try {
+                        daoUsuario.getAlterar(u);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    atualizarTabela();
+                    limpar();
+                    }
                 }
-                atualizarTabela();
-                limpar();
             }
-        }
+        }   
     }//GEN-LAST:event_ButtonSalvarAlterarActionPerformed
 
     private void PasswordFieldConfirSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldConfirSenhaActionPerformed
@@ -631,6 +641,37 @@ public class View_Usuario extends javax.swing.JFrame {
     private void TextDescriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextDescriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextDescriActionPerformed
+
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
+        if(JOptionPane.showConfirmDialog(null, "Deseja realmente sair?") == 0)
+        {
+            this.dispose();
+        }
+    }//GEN-LAST:event_ButtonSairActionPerformed
+    
+        //---------------------Fomataçao das tabelas--------------------------
+    String tituloColuna[] = {"Codigo", "Nome", "Tipo Usuario", "Status"};
+    public void modeloDATabela(String[][] a){
+            modelo.setDataVector(a, tituloColuna);
+            JTabCadastro.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false,false,false,false
+            };
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            JTabCadastro.getColumnModel().getColumn(0).setPreferredWidth(30);
+            JTabCadastro.getColumnModel().getColumn(1).setPreferredWidth(200);
+            JTabCadastro.getColumnModel().getColumn(2).setPreferredWidth(100);
+            JTabCadastro.getColumnModel().getColumn(3).setPreferredWidth(50);
+            
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            JTabCadastro.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            JTabCadastro.setRowHeight(25);               
+    }
+    
     public void atualizarTabela(){
        u = new Usuario();
         try {
@@ -649,9 +690,7 @@ public class View_Usuario extends javax.swing.JFrame {
                 }
                 i++;
             }
-            String tituloColuna[] = {"codigo", "nome", "tipoUsuario", "status"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -672,10 +711,7 @@ public class View_Usuario extends javax.swing.JFrame {
                 }else{
                     dados[i][3] =String.valueOf("Inativo");
                 }
-                i++;
-            String tituloColuna[] = {"codigo", "nome", "tipoUsuario", "status"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -697,11 +733,8 @@ public class View_Usuario extends javax.swing.JFrame {
                 }else{
                     dados[i][3] =String.valueOf("Inativo");
                 }
-                i++;
             }
-            String tituloColuna[] = {"codigo", "nome", "tipoUsuario", "status"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -763,7 +796,7 @@ public class View_Usuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoBusca;
-    private javax.swing.JButton ButtonAlterar;
+    private javax.swing.JButton ButtonEditar;
     private javax.swing.JButton ButtonLimpar1;
     private javax.swing.JButton ButtonNovo;
     private javax.swing.JButton ButtonSair;

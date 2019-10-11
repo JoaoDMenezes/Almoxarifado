@@ -385,7 +385,11 @@ public class NovaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
           if(requisitante==null){
-            requisitante = new View_Requisitante() ;
+              try {
+                  requisitante = new View_Requisitante() ;
+              } catch (SQLException ex) {
+                  Logger.getLogger(NovaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+              }
             requisitante.setLocationRelativeTo(null);
         }
         requisitante.setVisible(true); 

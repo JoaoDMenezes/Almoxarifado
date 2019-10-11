@@ -7,34 +7,38 @@ package almoxarifado.view;
 
 import almoxarifado.dao.CadastroDepartamento_Dao;
 import almoxarifado.modelo.Departamento;
+import almoxarifado.util.LimitaDigitos;
+import almoxarifado.util.LimitaDigitosNum;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 
 
 public class View_Departamento extends javax.swing.JFrame {
-    DefaultTableModel modelo = new DefaultTableModel();
-     CadastroDepartamento_Dao cDao;
     Departamento departamento;
-    String dep = "";
-    String dep2;
+    CadastroDepartamento_Dao cDao;
     List<Departamento> departamentos;
+    DefaultTableModel modelo = new DefaultTableModel();
+
     public View_Departamento() {
         departamento = new Departamento();
         cDao = new CadastroDepartamento_Dao();
         initComponents();
-        Tabela.setRowSorter(new TableRowSorter(modelo));
+        TextCodigo.setDocument(new LimitaDigitosNum(11));
+        TextNome.setDocument(new LimitaDigitos(30));
+        TextNomeDep.setDocument(new LimitaDigitos(30));
+        JTabCadastro.setRowSorter(new TableRowSorter(modelo));
         departamentos = new ArrayList<>();
-        this.setVisible(true);
-        
-        inicio();
         AtualizarTabela();
+        inicio();
     }
     private void limpar(){
         inicio();
@@ -44,22 +48,25 @@ public class View_Departamento extends javax.swing.JFrame {
     }
     private void inicio(){
         campo(false,false);
-        botao(true, false, false, false, true, true,false);
+        botao(true, false, false, true, false, true,true);
     }
+    private void alterar(){
+        campo(false,true);
+        botao(false, false, true, true, true, true, true);
+    }    
     public void campo(boolean codigo ,boolean nome){
         this.TextNome.setEnabled(nome);
         this.TextCod.setEnabled(codigo);
     }
-    private void botao(boolean novo, boolean salvar, boolean limpar, boolean sair, 
-             boolean pesCodigo, boolean pesNome, boolean alterar){
+    private void botao(boolean novo, boolean salvar, boolean limpar, boolean sair,
+        boolean alterar,boolean pesCodigo,boolean pesNome){
         ButtonNovo.setEnabled(novo);
         ButtonSalvar.setEnabled(salvar);
         ButtonLimpar.setEnabled(limpar);
         ButtonSair.setEnabled(sair);
-        
+        ButtonAlterar.setEnabled(alterar); 
         ButtonPesquiCod.setEnabled(pesCodigo);
         ButtonPesquiNome.setEnabled(pesNome);
-        ButtonAlterar.setEnabled(alterar); 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,7 +84,7 @@ public class View_Departamento extends javax.swing.JFrame {
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabela = new javax.swing.JTable();
+        JTabCadastro = new javax.swing.JTable();
         ButtonAlterar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -86,6 +93,7 @@ public class View_Departamento extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         TextNomeDep = new javax.swing.JTextField();
         ButtonPesquiNome = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -116,12 +124,12 @@ public class View_Departamento extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextCod, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextCod, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,17 +171,18 @@ public class View_Departamento extends javax.swing.JFrame {
         });
 
         ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonLimpar.setText("Limpar Dados");
+        ButtonLimpar.setText("Limpar");
         ButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonLimparActionPerformed(evt);
             }
         });
 
-        Tabela.setBackground(new java.awt.Color(230, 214, 165));
-        Tabela.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        Tabela.setModel(new javax.swing.table.DefaultTableModel(
+        JTabCadastro.setBackground(new java.awt.Color(230, 214, 165));
+        JTabCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        JTabCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null}
@@ -181,13 +190,29 @@ public class View_Departamento extends javax.swing.JFrame {
             new String [] {
                 "Código", "Nome"
             }
-        ));
-        Tabela.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TabelaMouseClicked(evt);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(Tabela);
+        JTabCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTabCadastroMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(JTabCadastro);
+        if (JTabCadastro.getColumnModel().getColumnCount() > 0) {
+            JTabCadastro.getColumnModel().getColumn(0).setMinWidth(50);
+            JTabCadastro.getColumnModel().getColumn(0).setPreferredWidth(100);
+            JTabCadastro.getColumnModel().getColumn(0).setMaxWidth(100);
+            JTabCadastro.getColumnModel().getColumn(1).setMinWidth(500);
+            JTabCadastro.getColumnModel().getColumn(1).setPreferredWidth(500);
+            JTabCadastro.getColumnModel().getColumn(1).setMaxWidth(700);
+        }
 
         ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonAlterar.setText("Alterar");
@@ -241,7 +266,7 @@ public class View_Departamento extends javax.swing.JFrame {
                         .addComponent(TextCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(ButtonPesquiCod)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,58 +279,68 @@ public class View_Departamento extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(TextNomeDep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextNomeDep, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtonPesquiNome))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ButtonSair, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(ButtonSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonAlterar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ButtonLimpar)))))
-                .addContainerGap())
+                        .addComponent(ButtonSalvar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ButtonAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ButtonLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(51, 51, 51))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(37, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(ButtonNovo))
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonLimpar)
                     .addComponent(ButtonAlterar)
-                    .addComponent(ButtonSalvar))
+                    .addComponent(ButtonSalvar)
+                    .addComponent(ButtonNovo)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonSair)
-                .addGap(0, 4, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -331,11 +366,11 @@ public class View_Departamento extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonSairActionPerformed
 
     private void ButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNovoActionPerformed
-    int i = JOptionPane.showConfirmDialog(null, "Tem certeza que Deseja Realizar Cadastro?");
+    int i = JOptionPane.showConfirmDialog(null, "Tem certeza que Deseja Realizar Registro?");
         if (i == 0) {
             limpar();
             campo(false,true);
-            botao(false, true, true, false, true, true, false);
+            botao(false, true, true, true, false, true, true);
         } 
     }//GEN-LAST:event_ButtonNovoActionPerformed
 
@@ -344,6 +379,8 @@ public class View_Departamento extends javax.swing.JFrame {
             if (TextNome.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Todos os Campos precisa ser preenchido");
             } else {
+                int s = JOptionPane.showConfirmDialog(null,"------- Salvar Como ------\nNome: "+TextNome.getText());
+                   if(s==0){
                     departamento = new Departamento();
                     departamento.setNome(TextNome.getText());
                    
@@ -352,7 +389,7 @@ public class View_Departamento extends javax.swing.JFrame {
                      AtualizarTabela();
                      limpar();
                     JOptionPane.showMessageDialog(null, "Cadastro Realizado com Sucesso");
-                    
+                } 
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERRO!");
@@ -360,25 +397,22 @@ public class View_Departamento extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonSalvarActionPerformed
 
-    private void TabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaMouseClicked
- JOptionPane.showConfirmDialog(null, "Deseja selecionar a linha?");
-        Tabela.getModel();
+    private void JTabCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTabCadastroMouseClicked
+         JOptionPane.showConfirmDialog(null, "Deseja selecionar a linha?");
+        JTabCadastro.getModel();
         try {
-            departamento = cDao.getDepartamentoByCodigo(Integer.parseInt(modelo.getValueAt(Tabela.getSelectedRow(), 0).toString()));
+            departamento = cDao.getDepartamentoByCodigo(Integer.parseInt(modelo.getValueAt(JTabCadastro.getSelectedRow(), 0).toString()));
             if (departamento == null) {
                 JOptionPane.showMessageDialog(null, "Departamento não encontrado");
             } else {
                 TextCod.setText(String.valueOf(departamento.getCodigo()));
                 TextNome.setText(departamento.getNome());
-                dep = departamento.getNome();
-                campo(false, false);
-                botao(false,false,true,true,true,true,true);
-
+                alterar();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-    }//GEN-LAST:event_TabelaMouseClicked
+    }//GEN-LAST:event_JTabCadastroMouseClicked
 
     private void ButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLimparActionPerformed
         limpar();
@@ -386,11 +420,23 @@ public class View_Departamento extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonLimparActionPerformed
 
     private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
-         int i = JOptionPane.showConfirmDialog(null, "Você deseja realmente atualizar os dados?");
-        if (i == 0) {
-             
-            campo(false, true);
-            botao(false, false, true,true, true, true, true);
+        int i = JOptionPane.showConfirmDialog(null, "Você deseja realmente atualizar os dados?");
+        if (i == 0) {           
+                    if (!TextNome.getText().isEmpty()) {
+          int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nNome: "+TextNome.getText());
+           if(s==0){         
+            departamento = new Departamento();
+            departamento.setCodigo(Integer.parseInt(TextCod.getText()));
+            departamento.setNome(TextNome.getText());
+            try {
+                cDao.Alterar(departamento);
+            } catch (SQLException ex) {
+                Logger.getLogger(View_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            AtualizarTabela();
+            limpar();
+           }
+        }
         }
         
     }//GEN-LAST:event_ButtonAlterarActionPerformed
@@ -401,7 +447,6 @@ public class View_Departamento extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Digite o Codigo para ser pesquisado");
             } else {
                 departamento = cDao.getDepartamentoByCodigo(Integer.parseInt(TextCodigo.getText()));
-                
             }
 
             if (departamento == null) {
@@ -410,7 +455,7 @@ public class View_Departamento extends javax.swing.JFrame {
                 TextCod.setText(String.valueOf(departamento.getCodigo()));
                 TextNome.setText(departamento.getNome());
                                
-                dep = departamento.getNome();
+//                dep = departamento.getNome();
                 campo(false,false);
                 botao(false, false, true,true, true, false,true);
 
@@ -436,7 +481,7 @@ public class View_Departamento extends javax.swing.JFrame {
                TextCod.setText(String.valueOf(departamento.getCodigo())); 
                TextNome.setText(departamento.getNome());
                                 
-                dep = departamento.getNome();
+//              dep = departamento.getNome();
                 campo(false,false);
                 botao(false, false, true,true,true,false,true);
 
@@ -445,7 +490,34 @@ public class View_Departamento extends javax.swing.JFrame {
             ex.printStackTrace();
         }            TextNome.setText(departamento.getNome());
     }//GEN-LAST:event_ButtonPesquiNomeActionPerformed
- public void AtualizarTabela() {
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            campo(false, true);
+            botao(false, false, true, true, true, true, true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+            //---------------------Fomataçao das tabelas--------------------------
+    String tituloColuna[] = {"codigo", "nome",};
+    public void modeloDATabela(String[][] a){
+            modelo.setDataVector(a, tituloColuna);
+            JTabCadastro.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false
+            };
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            JTabCadastro.getColumnModel().getColumn(0).setPreferredWidth(100);
+            JTabCadastro.getColumnModel().getColumn(1).setPreferredWidth(500);
+            
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            JTabCadastro.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            JTabCadastro.setRowHeight(25);    
+            JTabCadastro.updateUI();
+    }
+    //---------------------------------------------------------------------
+    public void AtualizarTabela() {
         //departamento = new Departamento();
         try {
             departamentos = cDao.TodosDepartamentosAtivos();
@@ -456,10 +528,11 @@ public class View_Departamento extends javax.swing.JFrame {
                 dados[i][1] = u.getNome();
                 i++;
             }
-            String tituloColuna[] = {"Código", "Nome"};
-            modelo.setDataVector(dados, tituloColuna);
-            Tabela.setModel(modelo);
-            Tabela.updateUI();
+            modeloDATabela(dados);
+//            String tituloColuna[] = {"Código", "Nome"};
+//            modelo.setDataVector(dados, tituloColuna);
+//            JTabCadastro.setModel(modelo);
+//            JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -505,11 +578,12 @@ public class View_Departamento extends javax.swing.JFrame {
     private javax.swing.JButton ButtonPesquiNome;
     private javax.swing.JButton ButtonSair;
     private javax.swing.JButton ButtonSalvar;
-    private javax.swing.JTable Tabela;
+    private javax.swing.JTable JTabCadastro;
     private javax.swing.JTextField TextCod;
     private javax.swing.JTextField TextCodigo;
     private javax.swing.JTextField TextNome;
     private javax.swing.JTextField TextNomeDep;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -17,6 +17,12 @@ private String nome;
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
+
     public int getCodigo() {
         return codigo;
     }

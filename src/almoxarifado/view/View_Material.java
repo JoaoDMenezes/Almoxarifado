@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -84,6 +86,33 @@ public class View_Material extends javax.swing.JFrame {
             return true;
         }
     }
+        //---------------------Fomataçao das tabelas--------------------------
+    String tituloColuna[] = {"Codigo", "Descricao","Categoria", "Consumivel","Observação"," Minimo","Maximo"," Custo Medio"};
+    public void modeloDATabela(String[][] a){
+            modelo.setDataVector(a, tituloColuna);
+            JTabCadastro.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false,false,false,false,false,false
+            };
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            JTabCadastro.getColumnModel().getColumn(0).setPreferredWidth(20);
+            JTabCadastro.getColumnModel().getColumn(1).setPreferredWidth(150);
+            JTabCadastro.getColumnModel().getColumn(2).setPreferredWidth(70);
+            JTabCadastro.getColumnModel().getColumn(3).setPreferredWidth(30);
+            JTabCadastro.getColumnModel().getColumn(4).setPreferredWidth(200);
+            JTabCadastro.getColumnModel().getColumn(5).setPreferredWidth(20);
+            JTabCadastro.getColumnModel().getColumn(6).setPreferredWidth(20);
+            JTabCadastro.getColumnModel().getColumn(7).setPreferredWidth(50);
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            JTabCadastro.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            JTabCadastro.setRowHeight(25);               
+    }
+    //---------------------------------------------------------------------
+    
         public void atualizarTabela(){
             m = new Material();
         try {
@@ -105,9 +134,7 @@ public class View_Material extends javax.swing.JFrame {
                 dados[i][7] = String.valueOf(u .getCustoMedio());
                 i++;
             }
-            String tituloColuna[] = {"Codigo", "Descricao","Categoria", "Consumivel","Observação"," Minimo","Maximo"," Custo Medio"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) { 
             Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,9 +161,7 @@ public class View_Material extends javax.swing.JFrame {
                 dados[i][7] = String.valueOf(u .getCustoMedio());
                 i++;
             }
-            String tituloColuna[] = {"Codigo", "Descricao","Categoria", "Consumivel","Observação"," Minimo","Maximo"," Custo Medio"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) { 
             Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,6 +212,7 @@ public class View_Material extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         TextDescri = new javax.swing.JTextField();
         botaoTodos = new javax.swing.JButton();
+        btAlterar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -226,7 +252,7 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextDesc);
-        TextDesc.setBounds(300, 30, 310, 23);
+        TextDesc.setBounds(300, 30, 340, 25);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Categoria");
@@ -243,22 +269,22 @@ public class View_Material extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(30, 110, 63, 15);
         jPanel1.add(TextObs);
-        TextObs.setBounds(110, 110, 500, 20);
+        TextObs.setBounds(110, 110, 530, 25);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel7.setText("Estoque Mínimo");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(10, 140, 90, 17);
+        jLabel7.setBounds(10, 150, 90, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Estoque Máximo");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(190, 140, 89, 20);
+        jLabel8.setBounds(190, 150, 89, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Custo Médio");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(420, 140, 70, 20);
+        jLabel9.setBounds(420, 150, 70, 20);
 
         TextEstMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,7 +292,7 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextEstMin);
-        TextEstMin.setBounds(110, 140, 70, 20);
+        TextEstMin.setBounds(110, 150, 70, 25);
 
         TextEstMax.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -274,21 +300,21 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
         jPanel1.add(TextEstMax);
-        TextEstMax.setBounds(290, 140, 120, 20);
+        TextEstMax.setBounds(290, 150, 120, 25);
 
         TextCustMed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPanel1.add(TextCustMed);
-        TextCustMed.setBounds(500, 140, 110, 23);
+        TextCustMed.setBounds(500, 150, 140, 25);
 
         ComboBoxCateg.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         ComboBoxCateg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria" }));
         jPanel1.add(ComboBoxCateg);
-        ComboBoxCateg.setBounds(110, 70, 160, 23);
+        ComboBoxCateg.setBounds(110, 70, 160, 25);
 
         TextCod.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TextCod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(TextCod);
-        TextCod.setBounds(110, 30, 110, 21);
+        TextCod.setBounds(110, 30, 110, 25);
 
         RadioButtonConsumivel.setBackground(new java.awt.Color(230, 214, 165));
         RadioButtonConsumivel.addActionListener(new java.awt.event.ActionListener() {
@@ -362,7 +388,7 @@ public class View_Material extends javax.swing.JFrame {
         });
 
         ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonAlterar.setText("Alterar");
+        ButtonAlterar.setText("Editar");
         ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonAlterarActionPerformed(evt);
@@ -409,14 +435,15 @@ public class View_Material extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botaoPesquisarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,14 +452,26 @@ public class View_Material extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(TextCodMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoPesquisarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(botaoPesquisarCodigo))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(botaoTodos)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextDescri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
+
+        btAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btAlterar.setText("Alterar");
+        btAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -441,50 +480,52 @@ public class View_Material extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonNovo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(ButtonSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButtonLimpar1))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButton1)
+                                .addComponent(jScrollPane1)
+                                .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(ButtonNovo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                                    .addComponent(ButtonSalvar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btAlterar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(25, 25, 25)
+                                    .addComponent(ButtonLimpar1))
+                                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(103, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(ButtonNovo))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonSalvar)
+                    .addComponent(ButtonAlterar)
                     .addComponent(ButtonLimpar1)
-                    .addComponent(ButtonAlterar))
+                    .addComponent(ButtonNovo)
+                    .addComponent(btAlterar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -500,7 +541,7 @@ public class View_Material extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(704, 593));
+        setSize(new java.awt.Dimension(824, 641));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -673,6 +714,42 @@ public class View_Material extends javax.swing.JFrame {
         BuscaTabela();
         }
     }//GEN-LAST:event_botaoTodosActionPerformed
+
+    private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
+        int o = JOptionPane.showConfirmDialog(null, "Você alterar os dados Cadastrados");
+        if (o == 0) {
+            boolean v = verificarCampo();
+            if (v) {
+                        m = new Material();
+                        m.setCodigo(Integer.parseInt(TextCod.getText()));
+                        m.setDescricao(TextDesc.getText());
+                   Categoria c;
+               
+                try {
+                    c = Dao_Material.pegaCategoria((String) String.valueOf(ComboBoxCateg.getSelectedItem()));                
+                    m.setCategoria(c);
+                    if(RadioButtonConsumivel.isSelected()){
+                       m.setConsumivel(true);
+                    }else{
+                       m.setConsumivel(false);
+                    }
+                    m.setObservacao(TextObs.getText());
+                    m.setEstoqueMinimo(Integer.valueOf(TextEstMin.getText()));
+                    m.setEstoqueMaximo(Integer.valueOf(TextEstMax.getText()));
+                    m.setCustoMedio(Float.valueOf(TextCustMed.getText()));
+                    } catch (SQLException ex) {
+                    Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    Dao_Material.getAlterar(m);
+                } catch (SQLException ex) {
+                    Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                }   
+                atualizarTabela();
+                limpar();
+            }
+    }//GEN-LAST:event_btAlterarActionPerformed
     private void BuscaCodigo(){
         m = new Material();
         try {
@@ -692,10 +769,8 @@ public class View_Material extends javax.swing.JFrame {
                 dados[i][5] = String.valueOf(m .getEstoqueMinimo());
                 dados[i][6] = String.valueOf(m .getEstoqueMaximo());
                 dados[i][7] = String.valueOf(m .getCustoMedio());
-                i++;
-            String tituloColuna[] = {"Codigo", "Descricao","Categoria", "Consumivel","Observação"," Minimo","Maximo"," Custo Medio"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+             
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -759,6 +834,7 @@ public class View_Material extends javax.swing.JFrame {
     private javax.swing.JTextField TextObs;
     private javax.swing.JButton botaoPesquisarCodigo;
     private javax.swing.JButton botaoTodos;
+    private javax.swing.JButton btAlterar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

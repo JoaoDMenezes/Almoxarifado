@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,6 +28,7 @@ public class View_Categoria extends javax.swing.JFrame {
     ArrayList<Categoria> categorias;
     Dao_CadastroCategoria daoCategoria;
     Categoria c;
+
 
     /**
      * Creates new form View_Categoria
@@ -45,6 +48,10 @@ public class View_Categoria extends javax.swing.JFrame {
         campo(false,false);
         botao(true, false, false, true, false, true, true);
     }
+    private void alterar(){
+        campo(false,true);
+        botao(false, false, true, true, true, true, true);
+    }
     public void campo(boolean codigo ,boolean nome){
         this.TextNome.setEnabled(nome);
         this.TextCod.setEnabled(codigo);
@@ -60,20 +67,41 @@ public class View_Categoria extends javax.swing.JFrame {
         ButtonPesqNome.setEnabled(pesNome);
         
     }
+    //---------------------Fomataçao das tabelas--------------------------
+    String tituloColuna[] = {"codigo", "nome",};
+    public void modeloDATabela(String[][] a){
+            modelo.setDataVector(a, tituloColuna);
+            JTabCadastro.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false
+            };
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            JTabCadastro.getColumnModel().getColumn(0).setPreferredWidth(100);
+            JTabCadastro.getColumnModel().getColumn(1).setPreferredWidth(500);
+            
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            JTabCadastro.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            JTabCadastro.setRowHeight(25);               
+    }
+    //---------------------------------------------------------------------
     public void atualizarTabela(){
        c = new Categoria();
         try {
             categorias = (ArrayList<Categoria>) daoCategoria.todosUsuarios();
-            String dados[][] = new String[categorias.size()][8];
+            String dados[][] = new String[categorias.size()][2];
             int i = 0;
             for (Categoria c : categorias) {
                 dados[i][0] = String.valueOf(c.getCodigo());
                 dados[i][1] = c.getNome();
                 i++;
             }
-            String tituloColuna[] = {"codigo", "nome"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+
+            modeloDATabela(dados);
+           
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -83,17 +111,12 @@ public class View_Categoria extends javax.swing.JFrame {
        c = new Categoria();
         try {
             c = daoCategoria.getCategoriaByCodigo(Integer.valueOf(TextCodigo.getText()));
-            String dados[][] = new String[1][4];
-            int i = 0;
-           
-                dados[i][0] = String.valueOf(c.getCodigo());
-                dados[i][1] = c.getNome();
-               
-                i++;
-            String tituloColuna[] = {"codigo", "nome",};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
-            JTabCadastro.updateUI();
+            String dados[][] = new String[1][2];
+            dados[0][0] = String.valueOf(c.getCodigo());
+            dados[0][1] = c.getNome();
+
+            modeloDATabela(dados);
+
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -109,9 +132,7 @@ public class View_Categoria extends javax.swing.JFrame {
                 dados[i][1] = c.getNome();
                 i++;
             }
-            String tituloColuna[] = {"codigo", "nome"};
-            modelo.setDataVector(dados, tituloColuna);
-            JTabCadastro.setModel(modelo);
+            modeloDATabela(dados);
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -149,6 +170,7 @@ public class View_Categoria extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         TextNomeCons = new javax.swing.JTextField();
         ButtonPesqNome = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -180,11 +202,11 @@ public class View_Categoria extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TextCod, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextCod, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextNome, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -232,7 +254,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonNovo);
-        ButtonNovo.setBounds(610, 30, 90, 30);
+        ButtonNovo.setBounds(30, 190, 90, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Cadastro de Categoria");
@@ -248,7 +270,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSalvar1);
-        ButtonSalvar1.setBounds(420, 200, 95, 30);
+        ButtonSalvar1.setBounds(320, 200, 95, 30);
 
         ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonLimpar.setText("Limpar");
@@ -272,13 +294,28 @@ public class View_Categoria extends javax.swing.JFrame {
             new String [] {
                 "Código", "Nome"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         JTabCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 JTabCadastroMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(JTabCadastro);
+        if (JTabCadastro.getColumnModel().getColumnCount() > 0) {
+            JTabCadastro.getColumnModel().getColumn(0).setMinWidth(50);
+            JTabCadastro.getColumnModel().getColumn(0).setPreferredWidth(100);
+            JTabCadastro.getColumnModel().getColumn(0).setMaxWidth(150);
+            JTabCadastro.getColumnModel().getColumn(1).setMinWidth(300);
+            JTabCadastro.getColumnModel().getColumn(1).setMaxWidth(700);
+        }
 
         jPanel2.add(jScrollPane1);
         jScrollPane1.setBounds(20, 240, 680, 107);
@@ -363,6 +400,16 @@ public class View_Categoria extends javax.swing.JFrame {
         jPanel2.add(jPanel1);
         jPanel1.setBounds(20, 390, 680, 110);
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setText("Editar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3);
+        jButton3.setBounds(430, 200, 73, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -400,6 +447,7 @@ public class View_Categoria extends javax.swing.JFrame {
                     TextCod.setText(String.valueOf(c.getCodigo()));
                     TextNome.setText(c.getNome());
                     BuscaCodigo();
+                    alterar();
                 }
             }catch(Exception ex){
                 ex.printStackTrace();
@@ -419,7 +467,7 @@ public class View_Categoria extends javax.swing.JFrame {
             TextCodigo.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
             TextCod.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
             TextNome.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 1).toString());
-            
+            alterar();
         }
     }//GEN-LAST:event_JTabCadastroMouseClicked
 
@@ -430,6 +478,8 @@ public class View_Categoria extends javax.swing.JFrame {
 
     private void ButtonSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvar1ActionPerformed
         if(!TextNome.getText().isEmpty()){
+            int s = JOptionPane.showConfirmDialog(null,"------- Salvar Como ------\nNome: "+TextNome.getText());
+            if(s==0){
             c = new Categoria();
             c.setNome(TextNome.getText());
             try {
@@ -439,18 +489,25 @@ public class View_Categoria extends javax.swing.JFrame {
             }
             limpar();
             atualizarTabela();
+            }
         }else{
             JOptionPane.showMessageDialog(null, "A dados a serem inceridos");
         }
     }//GEN-LAST:event_ButtonSalvar1ActionPerformed
 
     private void ButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonNovoActionPerformed
+        int i = JOptionPane.showConfirmDialog(null, "Tem certeza que Deseja Realizar Registro?");
+        if (i == 0) {
+        limpar();
         campo(false,true);
         botao(false, true, true, true, false, true, true);
+        }
     }//GEN-LAST:event_ButtonNovoActionPerformed
 
     private void ButtonSalvarAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarAlterarActionPerformed
         if (!TextNome.getText().isEmpty()) {
+          int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nNome: "+TextNome.getText());
+           if(s==0){         
             c = new Categoria();
             c.setCodigo(Integer.parseInt(TextCod.getText()));
             c.setNome(TextNome.getText());
@@ -461,6 +518,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
             atualizarTabela();
             limpar();
+           }
         }
     }//GEN-LAST:event_ButtonSalvarAlterarActionPerformed
 
@@ -470,6 +528,11 @@ public class View_Categoria extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_ButtonSairActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        campo(false, true);
+        botao(false, false, true, true, true, true, true);
+    }//GEN-LAST:event_jButton3ActionPerformed
         private void limpar(){
         inicio();
         TextCodigo.setText("");
@@ -526,6 +589,7 @@ public class View_Categoria extends javax.swing.JFrame {
     private javax.swing.JTextField TextNomeCons;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

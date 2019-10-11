@@ -107,8 +107,10 @@ public class Dao_CadastroFornecedores {
 //        pst.close();
 //    }
    public void getAlterar(Fornecedor f) throws SQLException {
-        sql = "UPDATE Fornecedor SET  razao =?, nomeFantasia =?, cnpj_cpf= ?,Inscricao_RG =?,rua = ?,numero = ?,"
-                + "complemento = ?, bairro = ?,cidade = ?, estado =?,cidade= ?,estado = ?,cep = ?, banco = ?, agencia = ?,conta = ?, telefone = ?,telefone2 = ?,email = ? WHERE codigo=?";
+        sql = "UPDATE Fornecedores SET  "
+                + "razao =?, nomeFantasia =?, cnpj_cpf= ?,Inscricao_RG =?"
+                + ",rua = ?,numero = ?,complemento = ?, bairro = ?,cidade = ?, estado =?,cep = ?,"
+                + " banco = ?, agencia = ?,conta = ?, telefone = ?,telefone2 = ?,email = ? WHERE codigo=?";
         pst = conexao.getInstance().prepareStatement(sql);
         pst.setString(1,f.getRazao());
         pst.setString(2,f.getNomeFantasia());

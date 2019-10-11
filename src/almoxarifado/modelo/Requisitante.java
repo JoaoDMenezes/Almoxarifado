@@ -9,7 +9,7 @@ public class Requisitante {
    
     private int codigo;
     private String nome;
-    private String departamento;
+    private Departamento departamento;
     private String observacao;
     private String funcao;
     private String status;
@@ -17,7 +17,7 @@ public class Requisitante {
     public Requisitante() {
     }
 
-    public Requisitante(int codigo, String nome, String departamento, String observacao, String funcao, String status) {
+    public Requisitante(int codigo, String nome, Departamento departamento, String observacao, String funcao, String status) {
         this.codigo = codigo;
         this.nome = nome;
         this.departamento = departamento;
@@ -50,11 +50,11 @@ public class Requisitante {
         this.nome = nome;
     }
 
-    public String getDepartamento() {
+    public Departamento getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
 
