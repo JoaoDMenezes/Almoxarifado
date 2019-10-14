@@ -552,7 +552,7 @@ public class View_Usuario extends javax.swing.JFrame {
         boolean CV = camposVazios();
         if(CV){
             if(PasswordFieldSenha.getText().equals(PasswordFieldConfirSenha.getText())){
-              int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nNome: "+TextNome.getText()
+              int s = JOptionPane.showConfirmDialog(null,"------- Salvar Como ------\nNome: "+TextNome.getText()
                                        + "\n Tipo do Usuario: "+ComboBoxTipoUsuario.getSelectedItem().toString());
                if(s==0){ 
                 
@@ -733,8 +733,10 @@ public class View_Usuario extends javax.swing.JFrame {
                 }else{
                     dados[i][3] =String.valueOf("Inativo");
                 }
+                i++;
             }
             modeloDATabela(dados);
+
             JTabCadastro.updateUI();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -750,9 +752,10 @@ public class View_Usuario extends javax.swing.JFrame {
         else{
             return true;
         }
-    }    private void limpar(){
-        TextCod.setText("");
-        TextNome.setText("");
+    }    
+    private void limpar(){
+       TextCod.setText("");
+       TextNome.setText("");
        PasswordFieldSenha.setText("");
        PasswordFieldConfirSenha.setText("");
        ComboBoxStatus.setSelectedIndex(0);

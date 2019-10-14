@@ -552,6 +552,11 @@ public class View_Requisitante extends javax.swing.JFrame {
                     || TextStatus.getSelectedItem().equals("") || TextObs.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Todos campos devem ser preenchidos");
             } else {
+                int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\n"
+                     + "Nome: "+TextNome.getText()+"\nFunção: "+TextFuncao.getText()
+                      + "\nDepartamento "+ cbDepartamento.getSelectedItem().toString()+
+                     "\nObs "+TextObs.getText());
+                if(s==0){
                     try {
                         departamento = dao_re.pegaDepartamento(String.valueOf(cbDepartamento.getSelectedItem()));
                     } catch (SQLException ex) {
@@ -572,6 +577,7 @@ public class View_Requisitante extends javax.swing.JFrame {
             AtualizarTabela();
             limpar();
             JOptionPane.showMessageDialog(null, "Cadastro Alterado com Sucesso");
+           }
             }
     }//GEN-LAST:event_ButtonAltActionPerformed
 

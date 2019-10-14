@@ -572,6 +572,10 @@ public class View_Material extends javax.swing.JFrame {
 
             boolean v = verificarCampo();
             if (v) {
+                int s = JOptionPane.showConfirmDialog(null,"------- Salvar Como ------\nDescrição: "+TextDesc.getText()
+                       + "\n Tipo do Categoria: "+ComboBoxCateg.getSelectedItem().toString()+ "\n Estoque Minimo: "+TextEstMin.getText()+
+                        "\n Estoque Minimo: "+TextEstMax.getText()+"\n Estoque Custo Medio: "+TextCustMed.getText()+"\n Obs: "+TextObs.getText());
+               if(s==0){ 
                     m = new Material();
                     m.setDescricao(TextDesc.getText());
                     Categoria c;
@@ -596,7 +600,7 @@ public class View_Material extends javax.swing.JFrame {
                     limpar();
                    atualizarTabela();
                     JOptionPane.showMessageDialog(null, "Salvo!");
-                
+            }
             } else {
                 JOptionPane.showMessageDialog(null, "A campos a serem preenchidos");
             }
@@ -720,6 +724,10 @@ public class View_Material extends javax.swing.JFrame {
         if (o == 0) {
             boolean v = verificarCampo();
             if (v) {
+                 int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nDescrição: "+TextDesc.getText()
+                       + "\n Tipo do Categoria: "+ComboBoxCateg.getSelectedItem().toString()+ "\n Estoque Minimo: "+TextEstMin.getText()+
+                        "\n Estoque Minimo: "+TextEstMax.getText()+"\n Estoque Custo Medio: "+TextCustMed.getText()+"\n Obs: "+TextObs.getText());
+               if(s==0){ 
                         m = new Material();
                         m.setCodigo(Integer.parseInt(TextCod.getText()));
                         m.setDescricao(TextDesc.getText());
@@ -748,6 +756,7 @@ public class View_Material extends javax.swing.JFrame {
                 }   
                 atualizarTabela();
                 limpar();
+            }
             }
     }//GEN-LAST:event_btAlterarActionPerformed
     private void BuscaCodigo(){
