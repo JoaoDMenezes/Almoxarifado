@@ -10,12 +10,12 @@ public class Material {
     private String observacao;
     private int estoqueMinimo;
     private int estoqueMaximo;
-    private float custoMedio;
+    private double custoMedio;
 
     public Material() {
     }
 
-    public Material(int codigo, String descricao, Categoria categoria, boolean consumivel, String observacao, int estoqueMinimo, int estoqueMaximo, float custoMedio) {
+    public Material(int codigo, String descricao, Categoria categoria, boolean consumivel, String observacao, int estoqueMinimo, int estoqueMaximo, double custoMedio) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.categoria = categoria;
@@ -82,11 +82,11 @@ public class Material {
         this.estoqueMaximo = estoqueMaximo;
     }
 
-    public float getCustoMedio() {
+    public double getCustoMedio() {
         return custoMedio;
     }
 
-    public void setCustoMedio(float custoMedio) {
+    public void setCustoMedio(double custoMedio) {
         this.custoMedio = custoMedio;
     }
     

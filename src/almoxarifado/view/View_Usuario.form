@@ -102,12 +102,14 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" pref="143" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ButtonEditar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="ButtonLimpar1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="ButtonSalvarAlterar" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="ButtonSalvar" alignment="0" min="-2" pref="29" max="-2" attributes="0"/>
-                      <Component id="ButtonNovo" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ButtonEditar" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="ButtonLimpar1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="ButtonNovo" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>

@@ -29,7 +29,7 @@ public class Dao_CadastroMaterial {
         pst.setString(5, m.getObservacao());
         pst.setInt(6, m.getEstoqueMinimo());
         pst.setInt(7, m.getEstoqueMaximo());
-        pst.setFloat(8, m.getCustoMedio());
+        pst.setDouble(8, m.getCustoMedio());
         pst.execute();
         pst.close();
     }
@@ -43,9 +43,8 @@ public class Dao_CadastroMaterial {
         ResultSet rs = st.getResultSet();
         while (rs.next()) {
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
-                    rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getFloat("custoMedio"));
-            materiais.add(m);
+                    rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"), rs.getDouble("custoMedio"));
+            materiais.add(m);    
         }
         st.close();
         return materiais;
@@ -62,7 +61,7 @@ public class Dao_CadastroMaterial {
         while(rs.next()){
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getFloat("custoMedio"));
+                    rs.getDouble("custoMedio"));
         }
         pst.close();
         return m;
@@ -76,7 +75,7 @@ public class Dao_CadastroMaterial {
         pst.setString(4, m.getObservacao());
         pst.setInt(5, m.getEstoqueMinimo());
         pst.setInt(6, m.getEstoqueMaximo());
-        pst.setFloat(7, m.getCustoMedio());
+        pst.setDouble(7, m.getCustoMedio());
         pst.setInt(8, m.getCodigo());
         pst.execute();
         pst.close();
@@ -124,7 +123,7 @@ public class Dao_CadastroMaterial {
         while (rs.next()) {
         m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getFloat("custoMedio"));
+                    rs.getDouble("custoMedio"));
             materiais.add(m);
         }
         pst.close();
@@ -141,7 +140,24 @@ public class Dao_CadastroMaterial {
         while(rs.next()){
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getFloat("custoMedio"));
+                    rs.getDouble("custoMedio"));
+        }
+        pst.close();
+        return m;
+    }
+
+    public Material getMateriaPorNome(String nome) throws SQLException {
+         Material m = null;
+        sql = "SELECT * FROM material WHERE descricao=?";
+        Statement st;
+        pst = (PreparedStatement) conexao.getInstance().prepareStatement(sql);
+        pst.setString(1, nome);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        while(rs.next()){
+         m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
+                    rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
+                    rs.getDouble("custoMedio"));
         }
         pst.close();
         return m;

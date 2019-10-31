@@ -90,7 +90,7 @@ public class CadastroRequisitante_Dao implements Serializable {
        public List<Requisitante> TodosRequisitantesAtivos() throws SQLException {
         Requisitante requisitante;
         List<Requisitante> requisitantes = new ArrayList<>();
-        sql = "Select * from requisitante order by nome";
+        sql = "Select*from requisitante where status ='ativo' order by nome";
         //sql = "Select * from requisitante order by nome";
         Statement st;
         pst = conexao.getInstance().prepareStatement(sql);

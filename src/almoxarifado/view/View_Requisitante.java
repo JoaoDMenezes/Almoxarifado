@@ -625,7 +625,7 @@ public class View_Requisitante extends javax.swing.JFrame {
     public void AtualizarTabela() {
 //        requisitante = new Requisitante();
         try {
-            requisitantes = dao_re.TodosRequisitantesAtivos();
+            requisitantes = dao_re.TodosRequisitantes();
             String dados[][] = new String[requisitantes.size()][6];
             int i = 0;
             for (Requisitante u : requisitantes) {

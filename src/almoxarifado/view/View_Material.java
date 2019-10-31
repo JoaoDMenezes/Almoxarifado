@@ -4,6 +4,7 @@ package almoxarifado.view;
 import almoxarifado.dao.Dao_CadastroMaterial;
 import almoxarifado.modelo.Categoria;
 import almoxarifado.modelo.Material;
+import almoxarifado.util.Formatador;
 import almoxarifado.util.LimitaDigitos;
 import almoxarifado.util.LimitaDigitosNum;
 import java.sql.SQLException;
@@ -27,7 +28,9 @@ public class View_Material extends javax.swing.JFrame {
     ArrayList<Material> materiais;
     Vector<Categoria>categorias;
     Categoria categoria;
+    Formatador formatador ;
     public View_Material() throws SQLException {
+        formatador = new Formatador();
         categoria = new Categoria();
         m= new Material();
         Dao_Material = new Dao_CadastroMaterial();
@@ -38,8 +41,8 @@ public class View_Material extends javax.swing.JFrame {
         TextDesc.setDocument(new LimitaDigitos(30));
         TextDescri.setDocument(new LimitaDigitos(30));
         TextObs.setDocument(new LimitaDigitos(50));
-        TextEstMax.setDocument(new LimitaDigitosNum(11));
         TextEstMin.setDocument(new LimitaDigitosNum(11));
+        TextEstMax.setDocument(new LimitaDigitosNum(11));
         categorias = new Dao_CadastroMaterial().CampoBox();
         ComboBoxCateg.setModel(new DefaultComboBoxModel(categorias));
         atualizarTabela();
@@ -51,7 +54,7 @@ public class View_Material extends javax.swing.JFrame {
         botao(true, false, false, true, false, true, true,false);
     }
     private void campo(boolean codigo, boolean descricao, boolean categoria, boolean consumivel,
-            boolean obs, boolean minimo, boolean maximo, boolean medio){
+          boolean obs, boolean minimo, boolean maximo, boolean medio){
           this.TextCod.setEnabled(codigo);
           this.TextDesc.setEnabled(descricao);
           this.ComboBoxCateg.setEnabled(categoria);
@@ -62,15 +65,16 @@ public class View_Material extends javax.swing.JFrame {
           this.TextCustMed.setEnabled(medio);
     }
         private void botao(boolean novo, boolean salvar, boolean limpar, boolean sair, 
-            boolean salvarAterar, boolean pesCodigo, boolean pesNome, boolean alterar){
+            boolean Alterar, boolean pesCodigo, boolean pesNome, boolean editar){
         ButtonNovo.setEnabled(novo);
         ButtonSalvar.setEnabled(salvar);
         ButtonLimpar1.setEnabled(limpar);
         ButtonSair.setEnabled(sair);
-        //ButtonSalvarAlterar.setEnabled(salvarAterar);
+        ButtonEditar.setEnabled(editar);
         botaoPesquisarCodigo.setEnabled(pesCodigo);
         botaoTodos.setEnabled(pesNome);
-        ButtonAlterar.setEnabled(alterar); 
+        btAlterar.setEnabled(Alterar);
+        
     } 
     
     public boolean verificarCampo() {
@@ -92,8 +96,9 @@ public class View_Material extends javax.swing.JFrame {
             modelo.setDataVector(a, tituloColuna);
             JTabCadastro.setModel(new DefaultTableModel(a,tituloColuna){
             boolean[] canEdit = new boolean[]{
-                false,false,false,false,false,false,false
+                false,false,false,false,false,false,false,false
             };
+            @Override
             public boolean isCellEditable(int rowIndex,int columnIndex){
                 return canEdit[columnIndex];
             }
@@ -113,7 +118,7 @@ public class View_Material extends javax.swing.JFrame {
     }
     //---------------------------------------------------------------------
     
-        public void atualizarTabela(){
+       public void atualizarTabela(){
             m = new Material();
         try {
             materiais = (ArrayList<Material>) Dao_Material.todosMateriais();
@@ -192,19 +197,19 @@ public class View_Material extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        TextEstMin = new javax.swing.JTextField();
-        TextEstMax = new javax.swing.JTextField();
-        TextCustMed = new javax.swing.JTextField();
         ComboBoxCateg = new javax.swing.JComboBox<>();
         TextCod = new javax.swing.JTextField();
         RadioButtonConsumivel = new javax.swing.JRadioButton();
+        TextCustMed = new javax.swing.JFormattedTextField();
+        TextEstMax = new javax.swing.JFormattedTextField();
+        TextEstMin = new javax.swing.JFormattedTextField();
         ButtonSair = new javax.swing.JButton();
         ButtonSalvar = new javax.swing.JButton();
         ButtonLimpar1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTabCadastro = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        ButtonAlterar = new javax.swing.JButton();
+        ButtonEditar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         TextCodMat = new javax.swing.JTextField();
@@ -286,26 +291,6 @@ public class View_Material extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(420, 150, 70, 20);
 
-        TextEstMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextEstMinActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TextEstMin);
-        TextEstMin.setBounds(110, 150, 70, 25);
-
-        TextEstMax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextEstMaxActionPerformed(evt);
-            }
-        });
-        jPanel1.add(TextEstMax);
-        TextEstMax.setBounds(290, 150, 120, 25);
-
-        TextCustMed.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(TextCustMed);
-        TextCustMed.setBounds(500, 150, 140, 25);
-
         ComboBoxCateg.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
         ComboBoxCateg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Categoria" }));
         jPanel1.add(ComboBoxCateg);
@@ -324,6 +309,18 @@ public class View_Material extends javax.swing.JFrame {
         });
         jPanel1.add(RadioButtonConsumivel);
         RadioButtonConsumivel.setBounds(380, 60, 30, 40);
+
+        TextCustMed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
+        jPanel1.add(TextCustMed);
+        TextCustMed.setBounds(500, 150, 140, 25);
+
+        TextEstMax.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        jPanel1.add(TextEstMax);
+        TextEstMax.setBounds(290, 150, 100, 25);
+
+        TextEstMin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0"))));
+        jPanel1.add(TextEstMin);
+        TextEstMin.setBounds(110, 150, 70, 25);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
@@ -365,11 +362,18 @@ public class View_Material extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         JTabCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -387,11 +391,11 @@ public class View_Material extends javax.swing.JFrame {
             }
         });
 
-        ButtonAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonAlterar.setText("Editar");
-        ButtonAlterar.addActionListener(new java.awt.event.ActionListener() {
+        ButtonEditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonEditar.setText("Editar");
+        ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonAlterarActionPerformed(evt);
+                ButtonEditarActionPerformed(evt);
             }
         });
 
@@ -499,7 +503,7 @@ public class View_Material extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addComponent(btAlterar)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(ButtonAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(25, 25, 25)
                                     .addComponent(ButtonLimpar1))
                                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -515,7 +519,7 @@ public class View_Material extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonSalvar)
-                    .addComponent(ButtonAlterar)
+                    .addComponent(ButtonEditar)
                     .addComponent(ButtonLimpar1)
                     .addComponent(ButtonNovo)
                     .addComponent(btAlterar))
@@ -556,17 +560,9 @@ public class View_Material extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextDescActionPerformed
 
-    private void TextEstMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextEstMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextEstMinActionPerformed
-
     private void RadioButtonConsumivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioButtonConsumivelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RadioButtonConsumivelActionPerformed
-
-    private void TextEstMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextEstMaxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TextEstMaxActionPerformed
 
     private void ButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSalvarActionPerformed
 
@@ -591,14 +587,14 @@ public class View_Material extends javax.swing.JFrame {
                     m.setObservacao(TextObs.getText());
                     m.setEstoqueMinimo(Integer.valueOf(TextEstMin.getText()));
                     m.setEstoqueMaximo(Integer.valueOf(TextEstMax.getText()));
-                    m.setCustoMedio(Float.valueOf(TextCustMed.getText()));
+                    m.setCustoMedio(formatador.converteVirgulaParaPonto(TextCustMed.getText()));
                    
                     Dao_Material.salvar(m);
                 } catch (SQLException ex) {
                     Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
                 }
                     limpar();
-                   atualizarTabela();
+                    atualizarTabela();
                     JOptionPane.showMessageDialog(null, "Salvo!");
             }
             } else {
@@ -612,8 +608,6 @@ public class View_Material extends javax.swing.JFrame {
         TextCodMat.setText(JTabCadastro.getValueAt(JTabCadastro.getSelectedRow(), 0).toString());
         try{   
           try {
-            
-           
            m = Dao_Material.getMaterialByCodigo(Integer.valueOf(TextCodMat.getText()));
            int a = Integer.valueOf(m.getCategoria().getCodigo());
             //  System.out.println(a);
@@ -624,16 +618,14 @@ public class View_Material extends javax.swing.JFrame {
            TextObs.setText(m.getObservacao());
            TextEstMin.setText(String.valueOf(m.getEstoqueMinimo()));
            TextEstMax.setText(String.valueOf(m.getEstoqueMaximo()));
-           TextCustMed.setText(String.valueOf(m.getCustoMedio()));
-//               botao(true,false,true,true,true,true,false,true);
-//               campo(true,false,false,false,false,false,false,false);     
+           TextCustMed.setText(formatador.convertePontoParaVirgula(m.getCustoMedio()));   
         } catch (SQLException ex) {
                 Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
         }
         }catch(Exception ex){
             ex.printStackTrace();
         }
-            ButtonAlterar.setEnabled(true);
+            ButtonEditar.setEnabled(true);
         }
     }//GEN-LAST:event_JTabCadastroMouseClicked
     private void limpar(){
@@ -678,7 +670,7 @@ public class View_Material extends javax.swing.JFrame {
                 TextObs.setText(m.getObservacao());
                 TextEstMin.setText(String.valueOf(m.getEstoqueMinimo()));
                 TextEstMax.setText(String.valueOf(m.getEstoqueMaximo()));
-                TextCustMed.setText(String.valueOf(m.getCustoMedio()));
+                TextCustMed.setText(formatador.convertePontoParaVirgula(m.getCustoMedio())); 
                
                BuscaCodigo();
 
@@ -688,11 +680,11 @@ public class View_Material extends javax.swing.JFrame {
             }catch(Exception ex){
                 ex.printStackTrace();
             }
-            ButtonAlterar.setEnabled(true);
+            ButtonEditar.setEnabled(true);
         }
     }//GEN-LAST:event_botaoPesquisarCodigoActionPerformed
 
-    private void ButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAlterarActionPerformed
+    private void ButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEditarActionPerformed
       if(TextCodMat.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Escolha um para Alterar");
         }
@@ -703,12 +695,12 @@ public class View_Material extends javax.swing.JFrame {
             botao(false, false, true, true, true, true, true, false);
             TextCodMat.setText("");
         }
-    }//GEN-LAST:event_ButtonAlterarActionPerformed
+    }//GEN-LAST:event_ButtonEditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        atualizarTabela();
        TextCodMat.setText("");
-       ButtonAlterar.setEnabled(false);
+       ButtonEditar.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void botaoTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTodosActionPerformed
@@ -720,44 +712,42 @@ public class View_Material extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoTodosActionPerformed
 
     private void btAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlterarActionPerformed
-        int o = JOptionPane.showConfirmDialog(null, "Você alterar os dados Cadastrados");
-        if (o == 0) {
+
             boolean v = verificarCampo();
             if (v) {
-                 int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nDescrição: "+TextDesc.getText()
+            int s = JOptionPane.showConfirmDialog(null,"------- Alterar Como ------\nDescrição: "+TextDesc.getText()
                        + "\n Tipo do Categoria: "+ComboBoxCateg.getSelectedItem().toString()+ "\n Estoque Minimo: "+TextEstMin.getText()+
                         "\n Estoque Minimo: "+TextEstMax.getText()+"\n Estoque Custo Medio: "+TextCustMed.getText()+"\n Obs: "+TextObs.getText());
                if(s==0){ 
                         m = new Material();
                         m.setCodigo(Integer.parseInt(TextCod.getText()));
                         m.setDescricao(TextDesc.getText());
-                   Categoria c;
-               
-                try {
-                    c = Dao_Material.pegaCategoria((String) String.valueOf(ComboBoxCateg.getSelectedItem()));                
-                    m.setCategoria(c);
-                    if(RadioButtonConsumivel.isSelected()){
-                       m.setConsumivel(true);
-                    }else{
-                       m.setConsumivel(false);
-                    }
-                    m.setObservacao(TextObs.getText());
-                    m.setEstoqueMinimo(Integer.valueOf(TextEstMin.getText()));
-                    m.setEstoqueMaximo(Integer.valueOf(TextEstMax.getText()));
-                    m.setCustoMedio(Float.valueOf(TextCustMed.getText()));
-                    } catch (SQLException ex) {
-                    Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                        Categoria c;
+
+                     try {
+                         c = Dao_Material.pegaCategoria((String) String.valueOf(ComboBoxCateg.getSelectedItem()));                
+                         m.setCategoria(c);
+                         if(RadioButtonConsumivel.isSelected()){
+                            m.setConsumivel(true);
+                         }else{
+                            m.setConsumivel(false);
+                         }
+                         m.setObservacao(TextObs.getText());
+                         m.setEstoqueMinimo(Integer.valueOf(TextEstMin.getText()));
+                         m.setEstoqueMaximo(Integer.valueOf(TextEstMax.getText()));
+                         m.setCustoMedio(formatador.converteVirgulaParaPonto(TextCustMed.getText())); 
+                         } catch (SQLException ex) {
+                         Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
+                     }
                 try {
                     Dao_Material.getAlterar(m);
                 } catch (SQLException ex) {
                     Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                }   
                 atualizarTabela();
                 limpar();
-            }
-            }
+                }
+            }   
     }//GEN-LAST:event_btAlterarActionPerformed
     private void BuscaCodigo(){
         m = new Material();
@@ -825,7 +815,7 @@ public class View_Material extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonAlterar;
+    private javax.swing.JButton ButtonEditar;
     private javax.swing.JButton ButtonLimpar1;
     private javax.swing.JButton ButtonNovo;
     private javax.swing.JButton ButtonSair;
@@ -835,11 +825,11 @@ public class View_Material extends javax.swing.JFrame {
     private javax.swing.JRadioButton RadioButtonConsumivel;
     private javax.swing.JTextField TextCod;
     private javax.swing.JTextField TextCodMat;
-    private javax.swing.JTextField TextCustMed;
+    private javax.swing.JFormattedTextField TextCustMed;
     private javax.swing.JTextField TextDesc;
     private javax.swing.JTextField TextDescri;
-    private javax.swing.JTextField TextEstMax;
-    private javax.swing.JTextField TextEstMin;
+    private javax.swing.JFormattedTextField TextEstMax;
+    private javax.swing.JFormattedTextField TextEstMin;
     private javax.swing.JTextField TextObs;
     private javax.swing.JButton botaoPesquisarCodigo;
     private javax.swing.JButton botaoTodos;
