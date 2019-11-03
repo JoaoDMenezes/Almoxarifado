@@ -16,6 +16,21 @@ public class Dao_Requisicao {
     String sql;
     CadastroRequisitante_Dao requsitante = new CadastroRequisitante_Dao();
     
+    
+    
+    public void Salvar(Requisicao requisicao) throws SQLException {
+       int codigo = 0;
+        sql = "INSERT INTO requisicao VALUES(?,?,now(),?)";
+        pst = conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, codigo);
+        pst.setInt(2, requisicao.getRequisitante().getCodigo());
+        pst.setDouble(3, requisicao.getValorTotal());
+        pst.execute();
+        pst.close();
+    }
+    
+    
+    
     public ArrayList<Requisicao> ListaDeRequisicoes() throws SQLException{
         ArrayList<Requisicao> requisicao = new ArrayList();
         Requisitante R = new Requisitante();
@@ -30,6 +45,7 @@ public class Dao_Requisicao {
          req.setId(rs.getInt("codigo"));
          req.setRequisitante(requsitante.getRequisitanteByCodigo(rs.getInt("codigo_req")));
          req.setData(rs.getDate("dataReq"));
+         req.setValorTotal(rs.getDouble("valorReq"));
          requisicao.add(req);    
         }
         st.close();
@@ -45,5 +61,6 @@ public class Dao_Requisicao {
         
         pst.close();
     }
+    
 }
 

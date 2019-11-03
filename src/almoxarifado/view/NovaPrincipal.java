@@ -46,8 +46,11 @@ public class NovaPrincipal extends javax.swing.JFrame {
     ArrayList<Material> listaMate = new ArrayList<>();
 
     DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo2 = new DefaultTableModel();
+    
 
     Requisicao requisicao;
+    Dao_Requisicao dao_que;
     ArrayList<Requisicao> listaRequicao = new ArrayList<>();
     ControllerRequisicao Con_requisicao;
 
@@ -56,9 +59,10 @@ public class NovaPrincipal extends javax.swing.JFrame {
         setExtendedState(MAXIMIZED_BOTH);
         listarCliente();
         listarMaterial();
-        atualizarTabela();
+        atualizarTabela();  
         limparRequisicao();
         codigoDaCombobox();
+        
     }
 
     /**
@@ -103,7 +107,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         TabelaPedido = new javax.swing.JTable();
         jButton20 = new javax.swing.JButton();
         btNovo = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
+        txSalvar = new javax.swing.JButton();
         txValorTotal = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -317,7 +321,12 @@ public class NovaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton22.setText("Salvar");
+        txSalvar.setText("Salvar");
+        txSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txSalvarActionPerformed(evt);
+            }
+        });
 
         jLabel47.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel47.setText("Valor Total");
@@ -368,7 +377,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
                                 .addGap(34, 34, 34)
                                 .addComponent(btNovo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton22))
+                                .addComponent(txSalvar))
                             .addGroup(jPanel8Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel47)
@@ -406,7 +415,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton20)
                     .addComponent(btNovo)
-                    .addComponent(jButton22))
+                    .addComponent(txSalvar))
                 .addContainerGap())
         );
 
@@ -804,14 +813,14 @@ public class NovaPrincipal extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(NovaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-            DefaultTableModel modelo = (DefaultTableModel) TabelaPedido.getModel();
+            DefaultTableModel modelo1 = (DefaultTableModel) TabelaPedido.getModel();
             int cont = 0;
             double quantidade = 0;
             quantidade = Double.parseDouble(txQuantidade.getText());
             for (int i = 0; i < cont; i++) {
-                modelo.setNumRows(0);
+                modelo1.setNumRows(0);
             }
-            modelo.addRow(new Object[]{
+            modelo1.addRow(new Object[]{
                 Modet_mate.getCodigo(),
                 Modet_mate.getDescricao(),
                 txQuantidade.getText(),
@@ -824,6 +833,21 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private void txCodRequiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txCodRequiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txCodRequiActionPerformed
+
+    private void txSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txSalvarActionPerformed
+
+        try {
+            requisicao = new Requisicao();
+            requisicao.setRequisitante(Dao_requi.getRequisitanteByCodigo(Integer.parseInt(txCodRequi.getText())));
+            requisicao.setValorTotal(Double.parseDouble(txValorTotal.getText()));
+            //dao_que.Salvar(requisicao);
+            new Dao_Requisicao().Salvar(requisicao);
+            atualizarTabela();
+            limparRequisicao();
+        } catch (SQLException ex) {
+            Logger.getLogger(NovaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_txSalvarActionPerformed
 
     //--------------Cliente e materias para Requesição---------------------------
     private void listarCliente() throws SQLException {
@@ -844,10 +868,10 @@ public class NovaPrincipal extends javax.swing.JFrame {
 
     //-----------------------------tabela de requisisoes------------------------
     //---------------------Fomataçao das tabelas--------------------------
-    String tituloColuna[] = {"Codigo", "Nome", "Tipo Usuario", "Status"};
+    String tituloColuna[] = {"IdVendas", "Requisitante", "Valor", "Data"};
 
     public void modeloDATabela(String[][] a) {
-        modelo.setDataVector(a, tituloColuna);
+        modelo2.setDataVector(a, tituloColuna);
         TabelaRequi.setModel(new DefaultTableModel(a, tituloColuna) {
             boolean[] canEdit = new boolean[]{
                 false, false, false, false
@@ -877,7 +901,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
             for (Requisicao r : listaRequicao) {
                 dados[i][0] = String.valueOf(r.getId());
                 dados[i][1] = r.getRequisitante().getNome();
-                dados[i][2] = "200";
+                dados[i][2] = String.valueOf(r.getValorTotal());
                 dados[i][3] = String.valueOf(r.getData());
                 i++;
             }
@@ -901,9 +925,10 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private void limparRequisicao() throws SQLException {
         txValorTotal.setText("");
         txQuantidade.setText("");
-        modelo = (DefaultTableModel)TabelaPedido.getModel();
+        modelo = (DefaultTableModel) TabelaPedido.getModel();
         modelo.setNumRows(0);
         codigoDaCombobox();
+        
     }
 
     /**
@@ -963,7 +988,6 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
@@ -1009,6 +1033,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txCodRequisiçao;
     private javax.swing.JTextField txPesCodigoRequi;
     private javax.swing.JTextField txQuantidade;
+    private javax.swing.JButton txSalvar;
     private javax.swing.JTextField txValorTotal;
     // End of variables declaration//GEN-END:variables
 }
