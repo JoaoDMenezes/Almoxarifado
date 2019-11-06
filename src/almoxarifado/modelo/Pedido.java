@@ -4,15 +4,15 @@ package almoxarifado.modelo;
 public class Pedido {
     private int id;
     private Material material;
-    private Requisicao requisicao;
+    private int requisicao;
     private int quantidade;
-    private double valorUni;
+    //private double valorUni;
 
-    public Requisicao getRequisicao() {
+    public int getRequisicao() {
         return requisicao;
     }
 
-    public void setRequisicao(Requisicao requisicao) {
+    public void setRequisicao(int requisicao) {
         this.requisicao = requisicao;
     }
 
@@ -40,11 +40,11 @@ public class Pedido {
         this.quantidade = quantidade;
     }
 
-    public double getValorUni() {
-        return valorUni;
-    }
-
-    public void setValorUni(double valorUni) {
-        this.valorUni = valorUni;
-    }
+//    public double getValorUni() {
+//        return valorUni;
+//    }
+//
+//    public void setValorUni(double valorUni) {
+//        this.valorUni = valorUni;
+//    }
 }

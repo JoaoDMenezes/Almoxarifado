@@ -10,6 +10,7 @@ public class Requisicao {
     private Date data;
     private double valorTotal;
     private ArrayList<Requisicao> listaRequisicao;
+   
     
     
     public Requisicao() {

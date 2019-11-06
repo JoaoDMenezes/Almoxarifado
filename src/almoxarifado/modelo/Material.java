@@ -11,6 +11,15 @@ public class Material {
     private int estoqueMinimo;
     private int estoqueMaximo;
     private double custoMedio;
+    private int quantidade;
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 
     public Material() {
     }

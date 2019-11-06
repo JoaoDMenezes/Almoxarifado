@@ -7,11 +7,14 @@ package almoxarifado.view;
 
 import almoxarifado.controle.ControleRequisitante;
 import almoxarifado.controle.ControllerMaterial;
+import almoxarifado.controle.ControllerPedido;
 import almoxarifado.controle.ControllerRequisicao;
 import almoxarifado.dao.CadastroRequisitante_Dao;
 import almoxarifado.dao.Dao_CadastroMaterial;
+import almoxarifado.dao.Dao_Pedido;
 import almoxarifado.dao.Dao_Requisicao;
 import almoxarifado.modelo.Material;
+import almoxarifado.modelo.Pedido;
 import almoxarifado.modelo.Requisicao;
 import almoxarifado.modelo.Requisitante;
 import java.sql.SQLException;
@@ -47,22 +50,25 @@ public class NovaPrincipal extends javax.swing.JFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableModel modelo2 = new DefaultTableModel();
-    
 
     Requisicao requisicao;
     Dao_Requisicao dao_que;
     ArrayList<Requisicao> listaRequicao = new ArrayList<>();
     ControllerRequisicao Con_requisicao;
 
+    Pedido pedido;
+    ArrayList<Pedido> listapedido;
+    ControllerPedido conPedido;
+
     public NovaPrincipal() throws SQLException {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         listarCliente();
         listarMaterial();
-        atualizarTabela();  
+        atualizarTabela();
         limparRequisicao();
         codigoDaCombobox();
-        
+
     }
 
     /**
@@ -118,6 +124,8 @@ public class NovaPrincipal extends javax.swing.JFrame {
         TabelaRequi = new javax.swing.JTable();
         btExcluirRequisicao = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -465,6 +473,12 @@ public class NovaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/resultado_1.png"))); // NOI18N
+        jButton5.setText("Aceitar");
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/negativo.png"))); // NOI18N
+        jButton7.setText("Recusar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -485,6 +499,12 @@ public class NovaPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
                 .addContainerGap(464, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jButton7)
+                .addGap(149, 149, 149))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,7 +516,11 @@ public class NovaPrincipal extends javax.swing.JFrame {
                     .addComponent(jButton4))
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btExcluirRequisicao)
                     .addComponent(jButton6))
@@ -835,18 +859,38 @@ public class NovaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_txCodRequiActionPerformed
 
     private void txSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txSalvarActionPerformed
-
+        int a = 0;
         try {
             requisicao = new Requisicao();
             requisicao.setRequisitante(Dao_requi.getRequisitanteByCodigo(Integer.parseInt(txCodRequi.getText())));
             requisicao.setValorTotal(Double.parseDouble(txValorTotal.getText()));
-            //dao_que.Salvar(requisicao);
-            new Dao_Requisicao().Salvar(requisicao);
+            a = new ControllerRequisicao().salvar(requisicao);
+            //JOptionPane.showMessageDialog(null, a); 
             atualizarTabela();
-            limparRequisicao();
-        } catch (SQLException ex) {
-            Logger.getLogger(NovaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            //limparRequisicao();
+
+            //criando lista de pedidos
+            listapedido = new ArrayList<>();
+            int cont = TabelaPedido.getRowCount();
+            for (int i = 0; i < cont; i++) {
+                pedido = new Pedido();
+
+                pedido.setMaterial(Dao_Material.getMateriaPorNome((String) TabelaPedido.getValueAt(i, 1)));
+                //pedido.setRequisicao(requisicao);
+                //pedido.setRequisicao(dao_que.buscaCodigoById(a));
+                pedido.setRequisicao(a); 
+                pedido.setQuantidade(Integer.parseInt((String) TabelaPedido.getValueAt(i, 2)));
+                //pedido.setValorUni(Double.parseDouble((String) TabelaPedido.getValueAt(i, 3)));
+                listapedido.add(pedido);
+            }
+            //Salvar pedidos
+            new Dao_Pedido().salvarListaDePedidos(listapedido);
+            //conPedido.salvarPedidosEmLista(listapedido);
+            
+                limparRequisicao();
+            } catch (SQLException ex) {
+                Logger.getLogger(NovaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_txSalvarActionPerformed
 
     //--------------Cliente e materias para Requesição---------------------------
@@ -928,7 +972,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         modelo = (DefaultTableModel) TabelaPedido.getModel();
         modelo.setNumRows(0);
         codigoDaCombobox();
-        
+
     }
 
     /**
@@ -990,7 +1034,9 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

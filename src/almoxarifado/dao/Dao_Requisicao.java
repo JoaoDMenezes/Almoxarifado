@@ -1,4 +1,3 @@
-
 package almoxarifado.dao;
 
 import almoxarifado.modelo.Material;
@@ -11,15 +10,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dao_Requisicao {
+public class Dao_Requisicao extends ConexaoMySql {
+
     PreparedStatement pst;
     String sql;
     CadastroRequisitante_Dao requsitante = new CadastroRequisitante_Dao();
-    
-    
-    
+
     public void Salvar(Requisicao requisicao) throws SQLException {
-       int codigo = 0;
+        int codigo = 0;
         sql = "INSERT INTO requisicao VALUES(?,?,now(),?)";
         pst = conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, codigo);
@@ -28,10 +26,29 @@ public class Dao_Requisicao {
         pst.execute();
         pst.close();
     }
-    
-    
-    
-    public ArrayList<Requisicao> ListaDeRequisicoes() throws SQLException{
+
+    //-------------------teste salvar-------------------
+    public int salvarRequisicaoDAO(Requisicao Requi) {
+        try {
+            this.conectar();
+            return this.insertSQL("INSERT INTO requisicao ("
+                    + "dataReq,"
+                    + "codigo_req,"
+                    + "valorReq"
+                    + ") VALUES (now(),"
+                    + "'" + Requi.getRequisitante().getCodigo() + "',"
+                    + "'" + Requi.getValorTotal() + "'"
+                    + ");"
+            );
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            this.fecharConexao();
+        }
+    }
+
+    public ArrayList<Requisicao> ListaDeRequisicoes() throws SQLException {
         ArrayList<Requisicao> requisicao = new ArrayList();
         Requisitante R = new Requisitante();
         Requisicao req = new Requisicao();
@@ -41,26 +58,43 @@ public class Dao_Requisicao {
         st.executeQuery(sql);
         ResultSet rs = st.getResultSet();
         while (rs.next()) {
-         req = new Requisicao();
-         req.setId(rs.getInt("codigo"));
-         req.setRequisitante(requsitante.getRequisitanteByCodigo(rs.getInt("codigo_req")));
-         req.setData(rs.getDate("dataReq"));
-         req.setValorTotal(rs.getDouble("valorReq"));
-         requisicao.add(req);    
+            req = new Requisicao();
+            req.setId(rs.getInt("codigo"));
+            req.setRequisitante(requsitante.getRequisitanteByCodigo(rs.getInt("codigo_req")));
+            req.setData(rs.getDate("dataReq"));
+            req.setValorTotal(rs.getDouble("valorReq"));
+            requisicao.add(req);
         }
         st.close();
         return requisicao;
     }
-    
-        public void excluir(int codigo) throws SQLException{
-     
+
+    public void excluir(int codigo) throws SQLException {
+
         sql = "Delete from requisicao where codigo = ?";
         pst = conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, codigo);
         pst.execute();
-        
+
         pst.close();
     }
-    
-}
 
+    public Requisicao buscaCodigoById(int id) throws SQLException {
+        Requisicao requi = null;
+        sql = "Select * from requisicao where codigo=?";
+        pst = conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, id);
+        pst.executeQuery();
+        ResultSet rs = pst.getResultSet();
+        while (rs.next()) {
+            requi = new Requisicao();
+            requi.setId(rs.getInt("codigo"));
+            requi.setRequisitante(requsitante.getRequisitanteByCodigo(rs.getInt("codigo_req")));
+            requi.setData(rs.getDate("dataReq"));
+            requi.setValorTotal(rs.getDouble("valorReq"));
+        }
+        pst.close();
+        return requi;
+    }
+
+}

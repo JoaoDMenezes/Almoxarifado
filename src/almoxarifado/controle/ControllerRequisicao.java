@@ -18,4 +18,7 @@ public class ControllerRequisicao {
     public void excluir(int codigo) throws SQLException{
         this.requisicao.excluir(codigo);
     }
+    public int salvar(Requisicao requi){
+        return this.requisicao.salvarRequisicaoDAO(requi);
+    }
 }
