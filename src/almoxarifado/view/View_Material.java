@@ -228,7 +228,6 @@ public class View_Material extends javax.swing.JFrame {
         jLabel1.setText("Cadastro de Material");
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -323,7 +322,6 @@ public class View_Material extends javax.swing.JFrame {
         TextEstMin.setBounds(110, 150, 70, 25);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
         ButtonSair.setText("Sair");
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -332,7 +330,6 @@ public class View_Material extends javax.swing.JFrame {
         });
 
         ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -498,7 +495,7 @@ public class View_Material extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(ButtonNovo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                                     .addComponent(ButtonSalvar)
                                     .addGap(18, 18, 18)
                                     .addComponent(btAlterar)

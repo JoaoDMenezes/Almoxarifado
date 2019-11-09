@@ -144,7 +144,6 @@ public class View_Departamento extends javax.swing.JFrame {
         );
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +152,6 @@ public class View_Departamento extends javax.swing.JFrame {
         });
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
         ButtonSair.setText("Sair");
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +160,6 @@ public class View_Departamento extends javax.swing.JFrame {
         });
 
         ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

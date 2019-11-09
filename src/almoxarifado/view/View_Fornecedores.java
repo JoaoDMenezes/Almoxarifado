@@ -147,7 +147,6 @@ public class View_Fornecedores extends javax.swing.JFrame {
         txNomeFantasia.setBounds(340, 60, 530, 30);
 
         btnovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         btnovo.setText("Novo");
         btnovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,7 +158,6 @@ public class View_Fornecedores extends javax.swing.JFrame {
         jLabel1.setText("Cadastro de Fornecedores");
 
         btSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
         btSair.setText("Sair");
         btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,7 +166,6 @@ public class View_Fornecedores extends javax.swing.JFrame {
         });
 
         btSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
         btSalvar.setText("Salvar");
         btSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

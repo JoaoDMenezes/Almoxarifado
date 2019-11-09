@@ -21,4 +21,8 @@ public class ControllerRequisicao {
     public int salvar(Requisicao requi){
         return this.requisicao.salvarRequisicaoDAO(requi);
     }
+    
+    public void apro(int codigo) throws SQLException{
+        this.requisicao.aprovacaoNegativa(codigo);
+    }
 }

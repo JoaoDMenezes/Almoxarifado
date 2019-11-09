@@ -2,6 +2,16 @@
 package almoxarifado.modelo;
 
 public class Pedido {
+
+    public Pedido(int id, Material material, int requisicao, int quantidade) {
+        this.id = id;
+        this.material = material;
+        this.requisicao = requisicao;
+        this.quantidade = quantidade;
+    }
+    
+    public Pedido() {
+    }
     private int id;
     private Material material;
     private int requisicao;

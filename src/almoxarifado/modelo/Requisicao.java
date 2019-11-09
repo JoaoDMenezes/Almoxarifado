@@ -10,7 +10,15 @@ public class Requisicao {
     private Date data;
     private double valorTotal;
     private ArrayList<Requisicao> listaRequisicao;
-   
+    private String Aprovacao;
+
+    public String getAprovacao() {
+        return Aprovacao;
+    }
+
+    public void setAprovacao(String Aprovacao) {
+        this.Aprovacao = Aprovacao;
+    }
     
     
     public Requisicao() {

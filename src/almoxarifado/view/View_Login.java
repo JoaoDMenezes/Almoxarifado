@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 public class View_Login extends javax.swing.JFrame {
     Dao_login dao;
     Usuario usuario;
+    NovaPrincipal nova;
     /**
      * Creates new form View_Usuario
      */
@@ -54,8 +55,6 @@ public class View_Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(230, 214, 165));
         jPanel1.setLayout(null);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Padlock_User_Control_22601.png"))); // NOI18N
         jPanel1.add(jLabel1);
         jLabel1.setBounds(370, 37, 80, 70);
 
@@ -119,7 +118,7 @@ public class View_Login extends javax.swing.JFrame {
 
     private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEntrarActionPerformed
         if(verificarCampos()){
-        fazerLogin();
+        fazerLogin2();
         limpar();
         }else{
             JOptionPane.showMessageDialog(null,"Preencha os todos os Campos");
@@ -140,7 +139,23 @@ public class View_Login extends javax.swing.JFrame {
     private void fazerLogin(){
         try {
             if(dao.getLogin(String.valueOf(TextUsuario.getText()),String.valueOf(TextSenha.getText()))){
-                new Principal().setVisible(true);
+                new NovaPrincipal().setVisible(true);
+                this.dispose();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(View_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        private void fazerLogin2(){
+        try {
+            usuario = dao.getLogin2(TextUsuario.getText(), TextSenha.getText());
+            if(usuario.getNome().equals(String.valueOf(TextUsuario.getText()))
+                &&usuario.getSenha().equals(String.valueOf(TextSenha.getText()))){
+                nova = new NovaPrincipal();
+//                nova.usuario_login= new Usuario();
+//                nova.usuario_login = usuario;
+                nova.login(usuario.getNome(), usuario.getCodigo()+"", usuario.getTipoUsuario());
+                nova.setVisible(true);
                 this.dispose();
             }
         } catch (SQLException ex) {

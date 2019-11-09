@@ -63,19 +63,25 @@ public class Dao_Requisicao extends ConexaoMySql {
             req.setRequisitante(requsitante.getRequisitanteByCodigo(rs.getInt("codigo_req")));
             req.setData(rs.getDate("dataReq"));
             req.setValorTotal(rs.getDouble("valorReq"));
+            req.setAprovacao(rs.getString("Aprovacao"));
             requisicao.add(req);
         }
         st.close();
         return requisicao;
     }
-
+    public void excluirPedidos(int codigo) throws SQLException{
+        sql ="Delete from pedido where cod_requisicao = ? ";
+        pst= conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, codigo);
+        pst.execute();
+        pst.close();
+    }
     public void excluir(int codigo) throws SQLException {
 
         sql = "Delete from requisicao where codigo = ?";
         pst = conexao.getInstance().prepareStatement(sql);
         pst.setInt(1, codigo);
         pst.execute();
-
         pst.close();
     }
 
@@ -95,6 +101,21 @@ public class Dao_Requisicao extends ConexaoMySql {
         }
         pst.close();
         return requi;
+    }
+    
+    public void aprovacaoPositiva(int codigo) throws SQLException{
+        sql="update requisicao  set aprovacao='Aprovado' where codigo=?";
+        pst = conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, codigo);
+        pst.execute();
+        pst.close();
+    }
+        public void aprovacaoNegativa(int codigo) throws SQLException{
+        sql="update requisicao  set aprovacao='Negado' where codigo=?";
+        pst = conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, codigo);
+        pst.execute();
+        pst.close();
     }
 
 }

@@ -138,7 +138,6 @@ public class View_Requisitante extends javax.swing.JFrame {
         jLabel1.setText("Cadastro de Requisitante");
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +202,6 @@ public class View_Requisitante extends javax.swing.JFrame {
         TextFuncao.setBounds(320, 70, 150, 25);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
         ButtonSair.setText("Sair");
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,7 +210,6 @@ public class View_Requisitante extends javax.swing.JFrame {
         });
 
         ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

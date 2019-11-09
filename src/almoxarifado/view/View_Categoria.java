@@ -225,7 +225,6 @@ public class View_Categoria extends javax.swing.JFrame {
         jPanel4.setBounds(20, 80, 680, 100);
 
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/door_in.png"))); // NOI18N
         ButtonSair.setText("Sair");
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +245,6 @@ public class View_Categoria extends javax.swing.JFrame {
         ButtonSalvarAlterar.setBounds(520, 200, 90, 30);
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/script_add.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,7 +260,6 @@ public class View_Categoria extends javax.swing.JFrame {
         jLabel3.setBounds(20, 30, 210, 22);
 
         ButtonSalvar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSalvar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/disk.png"))); // NOI18N
         ButtonSalvar1.setText("Salvar");
         ButtonSalvar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,7 +267,7 @@ public class View_Categoria extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ButtonSalvar1);
-        ButtonSalvar1.setBounds(320, 200, 95, 30);
+        ButtonSalvar1.setBounds(320, 200, 75, 30);
 
         ButtonLimpar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ButtonLimpar.setText("Limpar");
