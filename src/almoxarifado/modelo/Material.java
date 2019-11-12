@@ -13,6 +13,7 @@ public class Material {
     private double custoMedio;
     private int quantidade;
 
+
     public int getQuantidade() {
         return quantidade;
     }
@@ -24,7 +25,7 @@ public class Material {
     public Material() {
     }
 
-    public Material(int codigo, String descricao, Categoria categoria, boolean consumivel, String observacao, int estoqueMinimo, int estoqueMaximo, double custoMedio) {
+    public Material(int codigo, String descricao, Categoria categoria, boolean consumivel, String observacao, int estoqueMinimo, int estoqueMaximo, double custoMedio,int quantidade) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.categoria = categoria;
@@ -33,6 +34,7 @@ public class Material {
         this.estoqueMinimo = estoqueMinimo;
         this.estoqueMaximo = estoqueMaximo;
         this.custoMedio = custoMedio;
+        this.quantidade = quantidade;
     }
 
     public int getCodigo() {

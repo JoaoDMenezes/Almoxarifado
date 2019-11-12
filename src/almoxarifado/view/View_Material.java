@@ -349,10 +349,7 @@ public class View_Material extends javax.swing.JFrame {
         JTabCadastro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         JTabCadastro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Descrição", "Categoria", "Consumível", "Estoque Mínimo", "Estoque Máximo", "Custo Médio"
@@ -495,7 +492,7 @@ public class View_Material extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(ButtonNovo)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 243, Short.MAX_VALUE)
                                     .addComponent(ButtonSalvar)
                                     .addGap(18, 18, 18)
                                     .addComponent(btAlterar)
@@ -504,7 +501,7 @@ public class View_Material extends javax.swing.JFrame {
                                     .addGap(25, 25, 25)
                                     .addComponent(ButtonLimpar1))
                                 .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(103, Short.MAX_VALUE))))
+                        .addContainerGap(105, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -521,8 +518,8 @@ public class View_Material extends javax.swing.JFrame {
                     .addComponent(ButtonNovo)
                     .addComponent(btAlterar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(11, 11, 11)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

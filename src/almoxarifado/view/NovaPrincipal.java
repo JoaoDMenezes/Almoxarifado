@@ -10,14 +10,17 @@ import almoxarifado.controle.ControllerMaterial;
 import almoxarifado.controle.ControllerPedido;
 import almoxarifado.controle.ControllerRequisicao;
 import almoxarifado.dao.CadastroRequisitante_Dao;
+import almoxarifado.dao.Dao_CadastroFornecedores;
 import almoxarifado.dao.Dao_CadastroMaterial;
 import almoxarifado.dao.Dao_Pedido;
 import almoxarifado.dao.Dao_Requisicao;
+import almoxarifado.modelo.Fornecedor;
 import almoxarifado.modelo.Material;
 import almoxarifado.modelo.Pedido;
 import almoxarifado.modelo.Requisicao;
 import almoxarifado.modelo.Requisitante;
 import almoxarifado.modelo.Usuario;
+import almoxarifado.modelo.entrada;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -37,7 +40,6 @@ public class NovaPrincipal extends javax.swing.JFrame {
     View_Categoria categoria;
     View_Departamento departamento;
     View_Fornecedores fornecedor;
-    View_Material material;
     View_Requisitante requisitante;
     View_Usuario usuario;
     Usuario usuario_login;
@@ -48,7 +50,8 @@ public class NovaPrincipal extends javax.swing.JFrame {
     Dao_CadastroMaterial Dao_Material = new Dao_CadastroMaterial();
     Material Modet_mate = new Material();
     ArrayList<Material> listaMate = new ArrayList<>();
-
+    View_Material material;
+    
     DefaultTableModel modelo = new DefaultTableModel();
     DefaultTableModel modelol = new DefaultTableModel();
     DefaultTableModel modelo2 = new DefaultTableModel();
@@ -62,17 +65,25 @@ public class NovaPrincipal extends javax.swing.JFrame {
     ArrayList<Pedido> listapedido;
     ControllerPedido conPedido;
     Dao_Pedido dao_pedido;
-
+    
+    
+    
+   
+    
     public NovaPrincipal() throws SQLException {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
         listarCliente();
         listarMaterial();
+        listarFornecedor();
         atualizarTabela();
+        atualizarTabelaEstoque();
+        atualizarTabelaentrada();
         limparRequisicao();
         codigoDaCombobox();
         modelol = (DefaultTableModel) TabelaPedido.getModel();
         PainelRequisicao.setVisible(false);
+        PainelEstoque.setVisible(false);
     }
 
     /**
@@ -139,6 +150,18 @@ public class NovaPrincipal extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        cbMaterialEntrada = new componentes.UJComboBox();
+        jLabel12 = new javax.swing.JLabel();
+        txQuantidadeEntrada = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelaentrada = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        cbFornecedorEntrada = new componentes.UJComboBox();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -631,15 +654,15 @@ public class NovaPrincipal extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1072, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(43, 43, 43))
         );
 
         PainelEstoque.addTab("Estoque", jPanel5);
@@ -668,8 +691,8 @@ public class NovaPrincipal extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1083, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -681,8 +704,90 @@ public class NovaPrincipal extends javax.swing.JFrame {
 
         PainelEstoque.addTab("Movimentaçoes", jPanel6);
 
+        jLabel11.setText("Material");
+
+        jLabel12.setText("Quantidade");
+
+        tabelaentrada.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Material", "Quantidade", "Data", "Fonecedor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(tabelaentrada);
+
+        jLabel13.setText("Fornecedor");
+
+        jButton8.setText("Adicionar ao Estoque");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbMaterialEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txQuantidadeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(cbFornecedorEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 733, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 365, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(cbMaterialEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12)
+                        .addComponent(txQuantidadeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13)
+                        .addComponent(cbFornecedorEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
+        );
+
         jLayeredPane1.setLayer(PainelRequisicao, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(PainelEstoque, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jPanel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -691,6 +796,10 @@ public class NovaPrincipal extends javax.swing.JFrame {
             .addComponent(PainelRequisicao)
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(PainelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 1118, Short.MAX_VALUE))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -699,8 +808,12 @@ public class NovaPrincipal extends javax.swing.JFrame {
                 .addComponent(PainelRequisicao, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                    .addComponent(PainelEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                    .addComponent(PainelEstoque)
                     .addContainerGap()))
+            .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 22, Short.MAX_VALUE)))
         );
 
         jPanel4.setBackground(new java.awt.Color(232, 219, 180));
@@ -756,7 +869,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -983,6 +1096,7 @@ public class NovaPrincipal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_cbMaterialPopupMenuWillBecomeInvisible
+    //---------------------Requisiçao---------------------------------
     private void codigoDaCombobox() throws SQLException {
         Modet_mate = new ControllerMaterial().retornaRequiNome(cbMaterial.getSelectedItem().toString());
         txCodMat.setText(String.valueOf(Modet_mate.getCodigo()));
@@ -1232,6 +1346,69 @@ public class NovaPrincipal extends javax.swing.JFrame {
       PainelEstoque.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        try {
+            Modet_mate = Dao_Material.getMateriaPorNome((String) cbMaterialEntrada.getSelectedItem());
+            int a =  Modet_mate.getQuantidade();
+            System.out.println(Modet_mate.getDescricao());
+            System.out.println(a);
+            int b = Integer.parseInt(txQuantidadeEntrada.getText());
+            int soma = a + b;
+            Dao_Material.adicionar(soma, Modet_mate.getCodigo());
+            Dao_Material.salvarEntrada(String.valueOf(cbMaterialEntrada.getSelectedItem()), 
+            String.valueOf(cbFornecedorEntrada.getSelectedItem()), String.valueOf(txQuantidadeEntrada.getText()));
+            atualizarTabelaentrada();
+          } catch (SQLException ex) {
+            Logger.getLogger(NovaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+     //-----------------------------tabela de entrada------------------------
+    //---------------------Fomataçao das tabelas--------------------------
+    
+
+    public void modeloDATabelaEntada(String[][] a) {
+       String tituloColuna[] = {"Material", "Quantidade", "Data", "Fornecedor"};
+        modelo2.setDataVector(a, tituloColuna);
+        tabelaentrada.setModel(new DefaultTableModel(a, tituloColuna) {
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+        tabelaentrada.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tabelaentrada.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tabelaentrada.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tabelaentrada.getColumnModel().getColumn(3).setPreferredWidth(50);
+        
+
+        DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+        centralizado.setHorizontalAlignment(SwingConstants.CENTER);
+        tabelaentrada.getColumnModel().getColumn(0).setCellRenderer(centralizado);
+        tabelaentrada.setRowHeight(25);
+    }
+
+    public void atualizarTabelaentrada() {
+        entrada em = new entrada();
+        try {
+            ArrayList<entrada> lista = (ArrayList<entrada>) new Dao_CadastroMaterial().todosentradas();
+            String dados[][] = new String[lista.size()][5];
+            int i = 0;
+            for (entrada e : lista) {
+                dados[i][0] = e.getMaterial();
+                dados[i][1] = e.getQuantidade();
+                dados[i][2] = e.getData();
+                dados[i][3] = e.getFornecedor();
+                i++;
+            }
+            modeloDATabelaEntada(dados);
+            tabelaentrada.updateUI();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     //--------------Cliente e materias para Requesição---------------------------
     private void listarCliente() throws SQLException {
         listaRequi = (ArrayList<Requisitante>) Dao_requi.TodosRequisitantesAtivos();
@@ -1246,6 +1423,14 @@ public class NovaPrincipal extends javax.swing.JFrame {
         //cbMaterial.removeAllItems();
         for (int i = 0; i < listaMate.size(); i++) {
             cbMaterial.addItem(listaMate.get(i).getDescricao());
+            cbMaterialEntrada.addItem(listaMate.get(i).getDescricao());
+        }
+    }
+        private void listarFornecedor() throws SQLException {
+           ArrayList<Fornecedor> listaFornecedor = (ArrayList<Fornecedor>) new Dao_CadastroFornecedores().todosUsuarios();
+        //cbMaterial.removeAllItems();
+        for (int i = 0; i < listaFornecedor.size(); i++) {
+            cbFornecedorEntrada.addItem(listaFornecedor.get(i).getRazao());
         }
     }
 
@@ -1327,6 +1512,68 @@ public class NovaPrincipal extends javax.swing.JFrame {
         codigoDaCombobox();
 
     }
+    //---------------------------Estoque----------------------------
+        //---------------------Fomataçao das tabelas--------------------------
+    
+    public void modeloDATabelaEstoque(String[][] a){
+        String tituloColuna[] = {"Codigo", "Descricao","Categoria", "Consumivel","Observação"," Minimo","Maximo"," Custo Medio","Quantidade"};
+            modelo.setDataVector(a, tituloColuna);
+            TabelaEstoque.setModel(new DefaultTableModel(a,tituloColuna){
+            boolean[] canEdit = new boolean[]{
+                false,false,false,false,false,false,false,false,false
+            };
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return canEdit[columnIndex];
+            }
+            });
+            TabelaEstoque.getColumnModel().getColumn(0).setPreferredWidth(20);
+            TabelaEstoque.getColumnModel().getColumn(1).setPreferredWidth(150);
+            TabelaEstoque.getColumnModel().getColumn(2).setPreferredWidth(70);
+            TabelaEstoque.getColumnModel().getColumn(3).setPreferredWidth(30);
+            TabelaEstoque.getColumnModel().getColumn(4).setPreferredWidth(200);
+            TabelaEstoque.getColumnModel().getColumn(5).setPreferredWidth(20);
+            TabelaEstoque.getColumnModel().getColumn(6).setPreferredWidth(20);
+            TabelaEstoque.getColumnModel().getColumn(7).setPreferredWidth(50);
+            TabelaEstoque.getColumnModel().getColumn(8).setPreferredWidth(50);
+            DefaultTableCellRenderer centralizado = new DefaultTableCellRenderer();
+            centralizado.setHorizontalAlignment(SwingConstants.CENTER);            
+            TabelaEstoque.getColumnModel().getColumn(0).setCellRenderer(centralizado);            
+            TabelaEstoque.setRowHeight(25);               
+    }
+    //---------------------------------------------------------------------
+    
+       public void atualizarTabelaEstoque(){
+            Modet_mate = new Material();
+        try {
+            listaMate = (ArrayList<Material>) Dao_Material.todosMateriais();
+            String dados[][] = new String[listaMate.size()][9];
+            int i = 0;
+            for (Material u : listaMate) {
+                dados[i][0] = String.valueOf(u.getCodigo());
+                dados[i][1] = u.getDescricao();
+                dados[i][2] = String.valueOf(u.getCategoria().getNome());
+                if(u.isConsumivel()){
+                    dados[i][3] =String.valueOf("Sim");
+                }else{
+                    dados[i][3] =String.valueOf("Não");
+                }
+                dados[i][4] = u.getObservacao();
+                dados[i][5] = String.valueOf(u .getEstoqueMinimo());
+                dados[i][6] = String.valueOf(u .getEstoqueMaximo());
+                dados[i][7] = String.valueOf(u .getCustoMedio());
+                dados[i][8] = String.valueOf(u.getQuantidade());
+                i++;
+            }
+            modeloDATabelaEstoque(dados);
+            TabelaEstoque.updateUI();
+        } catch (SQLException ex) { 
+            Logger.getLogger(View_Material.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+       
+       //------------------Entrada-----------------------------------------
+       
 
     /**
      * @param args the command line arguments
@@ -1389,7 +1636,9 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btExcluirRequisicao;
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btRemover;
+    private componentes.UJComboBox cbFornecedorEntrada;
     private componentes.UJComboBox cbMaterial;
+    private componentes.UJComboBox cbMaterialEntrada;
     private componentes.UJComboBox cbRequesitante;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -1397,8 +1646,14 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1434,20 +1689,24 @@ public class NovaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable tabelaentrada;
     private javax.swing.JTextField txCodMat;
     private javax.swing.JTextField txCodRequi;
     private javax.swing.JTextField txCodRequisiçao;
     private javax.swing.JTextField txPesCodigoRequi;
     private javax.swing.JTextField txQuantidade;
+    private javax.swing.JTextField txQuantidadeEntrada;
     private javax.swing.JButton txSalvar;
     private javax.swing.JTextField txValorTotal;
     // End of variables declaration//GEN-END:variables

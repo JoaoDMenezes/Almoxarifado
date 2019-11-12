@@ -3,6 +3,7 @@ package almoxarifado.dao;
 
 import almoxarifado.modelo.Categoria;
 import almoxarifado.modelo.Material;
+import almoxarifado.modelo.entrada;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,7 +44,7 @@ public class Dao_CadastroMaterial {
         ResultSet rs = st.getResultSet();
         while (rs.next()) {
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
-                    rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"), rs.getDouble("custoMedio"));
+                    rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"), rs.getDouble("custoMedio"),rs.getInt("quantidade"));
             materiais.add(m);    
         }
         st.close();
@@ -61,7 +62,7 @@ public class Dao_CadastroMaterial {
         while(rs.next()){
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getDouble("custoMedio"));
+                    rs.getDouble("custoMedio"),rs.getInt("quantidade"));
         }
         pst.close();
         return m;
@@ -123,7 +124,7 @@ public class Dao_CadastroMaterial {
         while (rs.next()) {
         m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getDouble("custoMedio"));
+                    rs.getDouble("custoMedio"),rs.getInt("quantidade"));
             materiais.add(m);
         }
         pst.close();
@@ -140,7 +141,7 @@ public class Dao_CadastroMaterial {
         while(rs.next()){
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getDouble("custoMedio"));
+                    rs.getDouble("custoMedio"),rs.getInt("quantidade"));
         }
         pst.close();
         return m;
@@ -157,9 +158,46 @@ public class Dao_CadastroMaterial {
         while(rs.next()){
          m = new Material(rs.getInt("codigo"),rs.getString("descricao"),categoria.busca(rs.getInt("codigo_cat")),
                     rs.getBoolean("consumivel"),rs.getString("obs"),rs.getInt("estoqueMinimo"),rs.getInt("estoqueMaximo"),
-                    rs.getDouble("custoMedio"));
+                    rs.getDouble("custoMedio"),rs.getInt("quantidade"));
         }
         pst.close();
         return m;
+    }
+    
+        public void adicionar(int quant,int codigo) throws SQLException{
+        sql="update material  set quantidade=? where codigo=?";
+        pst = conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, quant);
+        pst.setInt(2, codigo);
+        pst.execute();
+        pst.close();
+    }
+        public void salvarEntrada(String material,String fornecedor,String quant) throws SQLException
+    {
+        int id = 0;
+        sql = "INSERT INTO entrada values(?,?, now(), ?, ?)";
+        pst =conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, 0);
+        pst.setString(2, material);
+        pst.setString(3,quant);
+        pst.setString(4,fornecedor);
+        pst.execute();
+        pst.close();
+    }
+        public List<entrada> todosentradas() throws SQLException {
+        entrada m ;
+        List<entrada> entradas = new ArrayList<>();
+        sql = "Select * from entrada order by id";
+        Statement st;
+        st = conexao.getInstance().createStatement();
+        st.executeQuery(sql);
+        ResultSet rs = st.getResultSet();
+        while (rs.next()) {
+         m = new entrada(rs.getString("material"),rs.getString("dt_entrada"),rs.getString("quant"),
+                    rs.getString("fornecedor"));
+           entradas.add(m);    
+        }
+        st.close();
+        return entradas;
     }
 }
