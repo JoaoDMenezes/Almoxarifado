@@ -3,6 +3,7 @@ package almoxarifado.dao;
 
 import almoxarifado.modelo.Categoria;
 import almoxarifado.modelo.Material;
+import almoxarifado.modelo.Saida;
 import almoxarifado.modelo.entrada;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -184,8 +185,37 @@ public class Dao_CadastroMaterial {
         pst.execute();
         pst.close();
     }
+     public void salvarSaida(String material,String quantAng,String quant,String requisitante) throws SQLException
+    {
+        int id = 0;
+        sql = "INSERT INTO saida values(?,?, now(), ?, ?, ?)";
+        pst =conexao.getInstance().prepareStatement(sql);
+        pst.setInt(1, 0);
+        pst.setString(2, material);
+        pst.setString(3,quantAng);
+        pst.setString(4,quant);
+        pst.setString(5, requisitante);
+        pst.execute();
+        pst.close();
+    }
+        public List<Saida> todosSaidas() throws SQLException {
+        Saida m ;
+        List<Saida> saidas = new ArrayList<>();
+        sql = "Select * from saida order by id";
+        Statement st;
+        st = conexao.getInstance().createStatement();
+        st.executeQuery(sql);
+        ResultSet rs = st.getResultSet();
+        while (rs.next()) {
+         m = new Saida(rs.getString("material"),rs.getString("dt_saida"),
+                    rs.getString("quant"),rs.getString("quantAnterior"),rs.getString("requisitante"));
+         saidas.add(m);    
+        }
+        st.close();
+        return saidas;
+    }
         public List<entrada> todosentradas() throws SQLException {
-        entrada m ;
+            entrada m ;
         List<entrada> entradas = new ArrayList<>();
         sql = "Select * from entrada order by id";
         Statement st;
@@ -200,4 +230,5 @@ public class Dao_CadastroMaterial {
         st.close();
         return entradas;
     }
+        
 }
