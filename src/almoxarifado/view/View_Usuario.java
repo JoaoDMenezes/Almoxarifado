@@ -199,6 +199,7 @@ public class View_Usuario extends javax.swing.JFrame {
         ComboBoxTipoUsuario.setBounds(110, 90, 190, 25);
 
         ButtonSalvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         ButtonSalvar.setText("Salvar");
         ButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,6 +208,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonLimpar1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonLimpar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_broom_16px_4.png"))); // NOI18N
         ButtonLimpar1.setText("Limpar");
         ButtonLimpar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +217,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonNovo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_new_16px.png"))); // NOI18N
         ButtonNovo.setText("Novo");
         ButtonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +226,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonSalvarAlterar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonSalvarAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_save_16px_1.png"))); // NOI18N
         ButtonSalvarAlterar.setText("Alterar");
         ButtonSalvarAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -267,6 +271,7 @@ public class View_Usuario extends javax.swing.JFrame {
         });
 
         ButtonEditar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ButtonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_edit_16px.png"))); // NOI18N
         ButtonEditar.setText("Editar");
         ButtonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,6 +283,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consulta de Usuários", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         BotaoBusca.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BotaoBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         BotaoBusca.setText("Buscar");
         BotaoBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,6 +301,7 @@ public class View_Usuario extends javax.swing.JFrame {
         jLabel12.setText("Nome");
 
         botaoPesquisarCodigo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        botaoPesquisarCodigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_search_16px_1.png"))); // NOI18N
         botaoPesquisarCodigo.setText("Buscar");
         botaoPesquisarCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,8 +348,9 @@ public class View_Usuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        ButtonSair.setBackground(new java.awt.Color(232, 222, 200));
         ButtonSair.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ButtonSair.setText("Sair");
+        ButtonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_cancel_48px.png"))); // NOI18N
         ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonSairActionPerformed(evt);
@@ -373,7 +381,7 @@ public class View_Usuario extends javax.swing.JFrame {
                         .addComponent(botaoTodos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(ButtonNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                         .addComponent(ButtonSalvar)
                         .addGap(18, 18, 18)
                         .addComponent(ButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -384,7 +392,7 @@ public class View_Usuario extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ButtonSair)))
+                        .addComponent(ButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
         jPanel4Layout.setVerticalGroup(
